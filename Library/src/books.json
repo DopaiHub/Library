@@ -1,0 +1,13 @@
+{"book":[
+  {
+  	"creator":"Dr. Seuss",
+  	"itemName":"The Cat in the Hat",
+    "description":"Poetry book",
+    "rating":3,
+    "genre":"Children",
+  	"yearPublished":1957,
+    "retail":7.50,
+    "maxTime":30,
+    "isNew":false
+  }
+]}
