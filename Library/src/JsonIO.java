@@ -5,13 +5,15 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
 public class JsonIO {
 	
+	//Test comment
+	
 	private static final String booksFile="books.json";
 	
 	public static ArrayList<Book> loadPeople() {
 		ArrayList<Book> books = new ArrayList<Book>();
 		
 		try {
-			FileReader reader = new FileReader("src/books.json");
+			FileReader reader = new FileReader("Library/src/books.json");
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray bookJSON = (JSONArray)jsonData.get("book");
@@ -52,7 +54,7 @@ public class JsonIO {
 		ArrayList<Item> itemList = new ArrayList<Item>();
 		
 		try {
-			FileReader reader = new FileReader("src/adults.json");
+			FileReader reader = new FileReader("Library/src/adults.json");
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray bookJSON = (JSONArray)jsonData.get("adult");
