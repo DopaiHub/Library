@@ -11,7 +11,7 @@ public class JsonIO {
 		ArrayList<Book> books = new ArrayList<Book>();
 		
 		try {
-			FileReader reader = new FileReader("Library/src/books.json");
+			FileReader reader = new FileReader("src/books.json");
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray bookJSON = (JSONArray)jsonData.get("book");
@@ -21,17 +21,17 @@ public class JsonIO {
 				String creator = (String)bookJSONIO.get("creator");
 				String itemName = (String)bookJSONIO.get("itemName");
 				String description = (String)bookJSONIO.get("description");
-				double rating =3;
-				//double rating= (double)bookJSONIO.get("rating");
+			//	double rating =3;
+				double rating= (double)(long)bookJSONIO.get("rating");
 				String genre = (String)bookJSONIO.get("genre");
-				int yearPublished=1957;
-				double retail=7.50;
-				int maxTime=30;
-				int checkoutTime=0;
-				//int yearPublished= (int)bookJSONIO.get("yearPublished");
-				//double retail= (double)bookJSONIO.get("retail");
-				//int maxTime= (int)bookJSONIO.get("maxTIme");
-				//int checkoutTime= (int)bookJSONIO.get("checkoutTime");
+				//int yearPublished=1957;
+				//double retail=7.50;
+				//int maxTime=30;
+				//int checkoutTime=0;
+				int yearPublished= (int)(long)bookJSONIO.get("yearPublished");
+				double retail= (double)bookJSONIO.get("retail");
+				int maxTime= (int)bookJSONIO.get("maxTIme");
+				int checkoutTime= (int)(long)bookJSONIO.get("checkoutTime");
 				boolean isNew=(boolean)bookJSONIO.get("isNew");
 				
 				books.add(new Book(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew));
@@ -52,7 +52,7 @@ public class JsonIO {
 		ArrayList<Item> itemList = new ArrayList<Item>();
 		
 		try {
-			FileReader reader = new FileReader("Library/src/adults.json");
+			FileReader reader = new FileReader("src/adults.json");
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray bookJSON = (JSONArray)jsonData.get("adult");
