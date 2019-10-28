@@ -8,6 +8,7 @@
   	"yearPublished": 1957,
     "retail": 7.50,
     "maxTime": 30,
+    "checkoutTime":0,
     "isNew":false
   }
 ]}
