@@ -5,8 +5,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
 public class JsonIO {
 	
-	//Test comment
-	
 	private static final String booksFile="books.json";
 	
 	public static ArrayList<Book> loadPeople() {
