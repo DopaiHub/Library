@@ -46,5 +46,40 @@ public class JsonIO {
 		return null;
 	}
 
+	public static ArrayList<Adult> loadUsers() {
+		ArrayList<Adult> adults = new ArrayList<Adult>();
+		//Temp item list
+		ArrayList<Item> itemList = new ArrayList<Item>();
+		
+		try {
+			FileReader reader = new FileReader("Library/src/adults.json");
+			JSONParser parser = new JSONParser();
+			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
+			JSONArray bookJSON = (JSONArray)jsonData.get("adult");
+			
+			for(int i=0; i < bookJSON.size(); i++) {
+				JSONObject bookJSONIO = (JSONObject)bookJSON.get(i);
+				String firstName = (String)bookJSONIO.get("firstName");
+				String lastName = (String)bookJSONIO.get("lastName");
+				String address = (String)bookJSONIO.get("address");
+				int phoneNumber = 1234567;
+				String email = (String)bookJSONIO.get("email");
+				int age= 30;
+				String password = (String)bookJSONIO.get("password");
+				int itemLimit = 5;
+				double balance = 5.00;
+				adults.add(new Adult(firstName, lastName, address,
+						phoneNumber, email, age, password,
+						itemLimit, balance, itemList));
+			}
+			
+			return adults;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 
 }
