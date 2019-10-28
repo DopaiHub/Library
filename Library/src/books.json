@@ -3,11 +3,12 @@
   	"creator":"Dr. Seuss",
   	"itemName":"The Cat in the Hat",
     "description":"Poetry book",
-    "rating":3,
+    "rating": 3,
     "genre":"Children",
-  	"yearPublished":1957,
-    "retail":7.50,
-    "maxTime":30,
+  	"yearPublished": 1957,
+    "retail": 7.50,
+    "maxTime": 30,
+    "checkoutTime":0,
     "isNew":false
   }
 ]}
