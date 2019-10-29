@@ -29,7 +29,6 @@ public abstract class Item {
 		this.checkoutTime=checkoutTime;
 		this.isNew=isNew;
 	}
-	
 	public String toString()
 	{
 		return "\nCreator:"+creator+"\nItemName:"+itemName+"\nDescription:"+description
@@ -37,6 +36,4 @@ public abstract class Item {
 				+"\nRetail:"+retail+"\nMaxTime:"+maxTime+"\nCheckoutTime:"+checkoutTime
 				+"\nisNew:"+isNew;
 	}
-	
-
 }
