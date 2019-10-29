@@ -42,4 +42,12 @@ public abstract class User {
 	{
 		return this.itemLimit;
 	}
+	
+	//TODO need to add expiration() method to Item
+	public int getExpiration(Item item)
+	{
+		int temp = 0;
+		return temp;
+		//return item.expiration();
+	}
 }
