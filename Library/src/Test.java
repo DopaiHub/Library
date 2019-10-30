@@ -4,7 +4,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ArrayList<Book> books=JsonIO.loadPeople();
+		ArrayList<Book> books=JsonIO.loadBooks();
 		ArrayList<Adult> adults = JsonIO.loadUsers();
 		
 		for(Book book : books)

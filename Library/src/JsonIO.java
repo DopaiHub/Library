@@ -21,17 +21,17 @@ public class JsonIO {
 				String creator = (String)bookJSONIO.get("creator");
 				String itemName = (String)bookJSONIO.get("itemName");
 				String description = (String)bookJSONIO.get("description");
-				double rating =3;
-				//double rating= (double)bookJSONIO.get("rating");
+				//double rating =3;
+				double rating= Double.parseDouble(bookJSONIO.get("rating").toString());
 				String genre = (String)bookJSONIO.get("genre");
-				int yearPublished=1957;
-				double retail=7.50;
-				int maxTime=30;
+				//int yearPublished=1957;
+				//double retail=7.50;
+				//int maxTime=30;
 				int checkoutTime=0;
-				//int yearPublished= (int)bookJSONIO.get("yearPublished");
-				//double retail= (double)bookJSONIO.get("retail");
-				//int maxTime= (int)bookJSONIO.get("maxTIme");
-				//int checkoutTime= (int)bookJSONIO.get("checkoutTime");
+				int yearPublished= Integer.parseInt(bookJSONIO.get("yearPublished").toString());
+				double retail= Double.parseDouble(bookJSONIO.get("retail").toString());
+				int maxTime= Integer.parseInt(bookJSONIO.get("maxTime").toString());
+				//int checkoutTime= Integer.parseInt(bookJSONIO.get("checkoutTime").toString());
 				boolean isNew=(boolean)bookJSONIO.get("isNew");
 				
 				books.add(new Book(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew));
