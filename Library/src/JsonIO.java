@@ -2,7 +2,9 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;;
+import org.json.simple.parser.JSONParser;
+import java.io.FileWriter;
+import java.io.IOException;
 public class JsonIO {
 	
 	private static final String booksFile="books.json";
@@ -21,17 +23,12 @@ public class JsonIO {
 				String creator = (String)bookJSONIO.get("creator");
 				String itemName = (String)bookJSONIO.get("itemName");
 				String description = (String)bookJSONIO.get("description");
-				//double rating =3;
-				double rating= Double.parseDouble(bookJSONIO.get("rating").toString());
+				double rating= (double)(long)bookJSONIO.get("rating");
 				String genre = (String)bookJSONIO.get("genre");
-				//int yearPublished=1957;
-				//double retail=7.50;
-				//int maxTime=30;
-				int checkoutTime=0;
-				int yearPublished= Integer.parseInt(bookJSONIO.get("yearPublished").toString());
-				double retail= Double.parseDouble(bookJSONIO.get("retail").toString());
-				int maxTime= Integer.parseInt(bookJSONIO.get("maxTime").toString());
-				//int checkoutTime= Integer.parseInt(bookJSONIO.get("checkoutTime").toString());
+				int yearPublished= (int)(long)bookJSONIO.get("yearPublished");
+				double retail= (double)bookJSONIO.get("retail");
+				int maxTime= (int)(long)bookJSONIO.get("maxTime");
+				int checkoutTime= (int)(long)bookJSONIO.get("checkoutTime");
 				boolean isNew=(boolean)bookJSONIO.get("isNew");
 				
 				books.add(new Book(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew));
@@ -81,5 +78,30 @@ public class JsonIO {
 		
 		return null;
 	}
-
+	public static void editBook()
+	{
+		JSONObject bookDetails= new JSONObject();
+		bookDetails.put("creator","Test Author");
+		bookDetails.put("itemName","Test Book");
+		bookDetails.put("description", "Random book");
+		bookDetails.put("rating", 2);
+		bookDetails.put("genre","fiction");
+		bookDetails.put("yearPublished", 2020);
+		bookDetails.put("retail",50.00);
+		bookDetails.put("maxTime", 30);
+		bookDetails.put("checkoutTime", 0);
+		bookDetails.put("isNew", true);
+		JSONObject book=new JSONObject();
+		book.put("book", bookDetails);
+		try (FileWriter file = new FileWriter("Library/src/books1.json")) {
+			 
+            file.write(book.toJSONString());
+         
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
+
