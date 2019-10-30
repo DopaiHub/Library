@@ -13,7 +13,7 @@ public class JsonIO {
 		ArrayList<Book> books = new ArrayList<Book>();
 		
 		try {
-			FileReader reader = new FileReader("src/books.json");
+			FileReader reader = new FileReader("bin/books.json");
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray bookJSON = (JSONArray)jsonData.get("book");
@@ -49,7 +49,7 @@ public class JsonIO {
 		ArrayList<Item> itemList = new ArrayList<Item>();
 		
 		try {
-			FileReader reader = new FileReader("src/adults.json");
+			FileReader reader = new FileReader("bin/adults.json");
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray bookJSON = (JSONArray)jsonData.get("adult");
