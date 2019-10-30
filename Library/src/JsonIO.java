@@ -7,7 +7,7 @@ public class JsonIO {
 	
 	private static final String booksFile="books.json";
 	
-	public static ArrayList<Book> loadPeople() {
+	public static ArrayList<Book> loadBooks() {
 		ArrayList<Book> books = new ArrayList<Book>();
 		
 		try {

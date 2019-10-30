@@ -13,5 +13,4 @@ public class Book extends Item {
 	{
 		return super.toString();
 	}
-
 }
