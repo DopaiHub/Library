@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import java.io.FileWriter;
 import java.io.IOException;
 public class JsonIO {
@@ -13,7 +14,7 @@ public class JsonIO {
 		ArrayList<Book> books = new ArrayList<Book>();
 		
 		try {
-			FileReader reader = new FileReader("src/books.json");
+			FileReader reader = new FileReader("Library/src/books1.json");
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray bookJSON = (JSONArray)jsonData.get("book");
@@ -49,7 +50,7 @@ public class JsonIO {
 		ArrayList<Item> itemList = new ArrayList<Item>();
 		
 		try {
-			FileReader reader = new FileReader("src/adults.json");
+			FileReader reader = new FileReader("Library/src/adults.json");
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray bookJSON = (JSONArray)jsonData.get("adult");
@@ -80,25 +81,34 @@ public class JsonIO {
 	}
 	public static void editBook()
 	{
-		JSONObject bookDetails= new JSONObject();
-		bookDetails.put("creator","Test Author");
-		bookDetails.put("itemName","Test Book");
-		bookDetails.put("description", "Random book");
-		bookDetails.put("rating", 2);
-		bookDetails.put("genre","fiction");
-		bookDetails.put("yearPublished", 2020);
-		bookDetails.put("retail",50.00);
-		bookDetails.put("maxTime", 30);
-		bookDetails.put("checkoutTime", 0);
-		bookDetails.put("isNew", true);
-		JSONObject book=new JSONObject();
-		book.put("book", bookDetails);
-		try (FileWriter file = new FileWriter("Library/src/books1.json")) {
-			 
+		try {
+			
+			JSONParser parser = new JSONParser();
+			Object obj=parser.parse(new FileReader("Library/src/books1.json"));
+			JSONArray jsonArray=(JSONArray)obj;
+			JSONObject bookDetails= new JSONObject();
+			
+			bookDetails.put("creator","Test Author");
+			bookDetails.put("itemName","Test Book");
+			bookDetails.put("description", "Random book");
+			bookDetails.put("rating", 2);
+			bookDetails.put("genre","fiction");
+			bookDetails.put("yearPublished", 2020);
+			bookDetails.put("retail",50.00);
+			bookDetails.put("maxTime", 30);
+			bookDetails.put("checkoutTime", 0);
+			bookDetails.put("isNew", true);
+			JSONObject book=new JSONObject();
+			
+			book.put("book", bookDetails);
+			jsonArray.add(book);
+			FileWriter file = new FileWriter("Library/src/books1.json");
             file.write(book.toJSONString());
+            file.flush();
+            file.close();
          
  
-        } catch (IOException e) {
+        } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
     }
