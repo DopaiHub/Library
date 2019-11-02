@@ -14,7 +14,7 @@ public class JsonIO {
 		ArrayList<Book> books = new ArrayList<Book>();
 		
 		try {
-			FileReader reader = new FileReader("Library/src/books.json");
+			FileReader reader = new FileReader("Library/src/books1.json");
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
 			JSONArray bookJSON = (JSONArray)jsonData.get("book");
@@ -24,7 +24,7 @@ public class JsonIO {
 				String creator = (String)bookJSONIO.get("creator");
 				String itemName = (String)bookJSONIO.get("itemName");
 				String description = (String)bookJSONIO.get("description");
-				double rating= (double)(long)bookJSONIO.get("rating");
+				double rating= (double)bookJSONIO.get("rating");
 				String genre = (String)bookJSONIO.get("genre");
 				int yearPublished= (int)(long)bookJSONIO.get("yearPublished");
 				double retail= (double)bookJSONIO.get("retail");
@@ -82,28 +82,53 @@ public class JsonIO {
 	public static void editBook()
 	{
 		try {
-			
+			FileReader reader = new FileReader("Library/src/books1.json");
 			JSONParser parser = new JSONParser();
-			Object obj=parser.parse(new FileReader("Library/src/books1.json"));
-			JSONArray jsonArray=(JSONArray)obj;
+			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
+			JSONArray bookJSON = (JSONArray)jsonData.get("book");
+			
+
+			JSONArray jsonArray=new JSONArray();
 			JSONObject bookDetails= new JSONObject();
-			
-			bookDetails.put("creator","Test Author");
-			bookDetails.put("itemName","Test Book");
-			bookDetails.put("description", "Random book");
-			bookDetails.put("rating", 2);
-			bookDetails.put("genre","fiction");
-			bookDetails.put("yearPublished", 2020);
-			bookDetails.put("retail",50.00);
-			bookDetails.put("maxTime", 30);
-			bookDetails.put("checkoutTime", 0);
-			bookDetails.put("isNew", true);
 			JSONObject book=new JSONObject();
+			for(int i=0; i < bookJSON.size(); i++) {
+				JSONObject bookJSONIO = (JSONObject)bookJSON.get(i);
+				String creator = (String)bookJSONIO.get("creator");
+				String itemName = (String)bookJSONIO.get("itemName");
+				String description = (String)bookJSONIO.get("description");
+				double rating= (double)bookJSONIO.get("rating");
+				String genre = (String)bookJSONIO.get("genre");
+				int yearPublished= (int)(long)bookJSONIO.get("yearPublished");
+				double retail= (double)bookJSONIO.get("retail");
+				int maxTime= (int)(long)bookJSONIO.get("maxTime");
+				int checkoutTime= (int)(long)bookJSONIO.get("checkoutTime");
+				boolean isNew=(boolean)bookJSONIO.get("isNew");
+				bookDetails.put("creator",creator);
+				bookDetails.put("itemName",itemName);
+				bookDetails.put("description",description);
+				bookDetails.put("rating",rating);
+				bookDetails.put("genre",genre);
+				bookDetails.put("yearPublished", yearPublished);
+				bookDetails.put("retail",retail);
+				bookDetails.put("maxTime", maxTime);
+				bookDetails.put("checkoutTime", checkoutTime);
+				bookDetails.put("isNew", isNew);
+				jsonArray.add(bookDetails);
+				bookDetails=new JSONObject();
+			}
 			
-			book.put("book", bookDetails);
-			jsonArray.add(book);
+			bookDetails=new JSONObject();
+			bookDetails.put("creator","Test Author");
+			bookDetails.put("itemName","Test Book"); bookDetails.put("description",
+			"Random book"); bookDetails.put("rating", 2.0);
+			bookDetails.put("genre","fiction"); bookDetails.put("yearPublished", 2020);
+			bookDetails.put("retail",50.00); bookDetails.put("maxTime", 30);
+		    bookDetails.put("checkoutTime", 0); bookDetails.put("isNew", true);
+			jsonArray.add(bookDetails);
+			JSONObject mainBook=new JSONObject();
+			mainBook.put("book",jsonArray);
 			FileWriter file = new FileWriter("Library/src/books1.json");
-            file.write(book.toJSONString());
+            file.write(mainBook.toString());
             file.flush();
             file.close();
          
