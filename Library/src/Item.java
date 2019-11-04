@@ -111,6 +111,6 @@ public class Item {
 		return "\nCreator:"+creator+"\nItemName:"+itemName+"\nDescription:"+description
 				+"\nRating:"+rating+"\nGenre:"+genre+"\nYearPublished:"+yearPublished
 				+"\nRetail:"+retail+"\nMaxTime:"+maxTime+"\nCheckoutTime:"+checkoutTime
-				+"\nisNew:"+isNew;
+				+"\nisNew:"+isNew+"\nNumcopies:"+numCopies+"\nType:"+type;
 	}
 }
