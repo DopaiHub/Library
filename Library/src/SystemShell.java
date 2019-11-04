@@ -21,7 +21,13 @@ public class SystemShell<T> {
 	
 	public void searchItem(String str)
 	{
-		
+		for(int i=0;i<jsonItemList.size();i++)
+		{
+			if (jsonItemList.get(i).getItemName().equalsIgnoreCase(str))
+			{
+				System.out.println(jsonItemList.get(i).toString());
+			}
+		}
 	}
 	
 	public User loginUser(String uEmail, String uPass)
