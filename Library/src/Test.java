@@ -4,12 +4,12 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		JsonIO.editBook();
-		ArrayList<Book> books=JsonIO.loadBooks();
+	//	JsonIO.editBook();
+		ArrayList<Item> items=JsonIO.loadItems();
 		ArrayList<Adult> adults = JsonIO.loadUsers();
-		for(Book book : books)
+		for(Item item : items)
 		{
-			System.out.println(book.toString());
+			System.out.println(item.toString());
 		}
 		
 		System.out.println("\n" + "--------------------" );

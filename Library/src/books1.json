@@ -1,1 +1,29 @@
-{"book":[{"maxTime":30,"creator":"Dr. Seuss","itemName":"The Cat in the Hat","rating":3.0,"genre":"Children","description":"Poetry book","yearPublished":1957,"isNew":false,"checkoutTime":0,"retail":7.5},{"maxTime":30,"creator":"Margaret Mitchell","itemName":"Gone With The Wind","rating":4.0,"genre":"Historical Fiction","description":"Historical Romantic novel in the Civil War","yearPublished":1936,"isNew":true,"checkoutTime":0,"retail":15.71},{"maxTime":30,"creator":"Test Author","itemName":"Test Book","rating":2.0,"genre":"fiction","description":"Random book","yearPublished":2020,"isNew":true,"checkoutTime":0,"retail":50.0},{"maxTime":30,"creator":"Test Author","itemName":"Test Book","rating":2.0,"genre":"fiction","description":"Random book","yearPublished":2020,"isNew":true,"checkoutTime":0,"retail":50.0}]}
+{"book":[
+  {
+  	"creator":"Dr. Seuss",
+  	"itemName":"The Cat in the Hat",
+    "description":"Poetry book",
+    "rating": 3,
+    "genre":"Children",
+  	"yearPublished": 1957,
+    "retail": 7.50,
+    "maxTime": 30,
+    "checkoutTime":0,
+    "isNew":false,
+    "numCopies":1,
+    "type":"book"
+  },{
+    "creator":"Margaret Mitchell",
+  	"itemName":"Gone With The Wind",
+    "description":"Historical Romantic novel in the Civil War",
+    "rating": 4,
+    "genre":"Historical Fiction",
+  	"yearPublished": 1936,
+    "retail": 15.71,
+    "maxTime": 30,
+    "checkoutTime":0,
+    "isNew":true,
+    "numCopies":1,
+    "type":"book"
+  }
+]}
