@@ -1,5 +1,5 @@
 
-public abstract class Item {
+public class Item {
 	protected String creator;
 	protected String itemName;
 	protected String description;
