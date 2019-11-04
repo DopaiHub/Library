@@ -1,12 +1,15 @@
 import java.util.ArrayList;
-public class SystemShell {
+public class SystemShell<T> {
 	protected ArrayList<Item> jsonItemList;
-	protected ArrayList<User> jsonUserList;
+	protected ArrayList<T> jsonUserList;
 	protected User person;
 	private static SystemShell shell;
 	
 	private SystemShell()
 	{
+		JsonIO json = new JsonIO();
+		jsonUserList = json.loadUsers();
+		jsonItemList = json.loadItems();
 	}
 	
 	public SystemShell launchSystem()
@@ -21,7 +24,7 @@ public class SystemShell {
 		
 	}
 	
-	public User loginUser()
+	public User loginUser(String uEmail, String uPass)
 	{
 		return null;
 	}
@@ -57,6 +60,16 @@ public class SystemShell {
 	}
 	
 	private void editItem(Item item)
+	{
+		
+	}
+	
+	public void registerUser(String a, String b, String c, String d, String e)
+	{
+		
+	}
+	
+	public void searchItemType(String iType)
 	{
 		
 	}
