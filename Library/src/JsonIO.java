@@ -10,8 +10,8 @@ public class JsonIO {
 	
 	private static final String booksFile="books.json";
 	
-	public static ArrayList<Book> loadBooks() {
-		ArrayList<Book> books = new ArrayList<Book>();
+	public static ArrayList<Item> loadItems() {
+		ArrayList<Item> books = new ArrayList<Item>();
 		
 		try {
 			FileReader reader = new FileReader("Library/src/books1.json");
@@ -79,6 +79,57 @@ public class JsonIO {
 		
 		return null;
 	}
+	public static void writeItem(ArrayList<Item> itemList)
+	{
+		try {
+			
+
+			JSONArray jsonArray=new JSONArray();
+			JSONObject bookDetails= new JSONObject();
+			JSONObject book=new JSONObject();
+			for(int i=0; i < itemList.size(); i++) {
+				String creator = itemList.get(i).getCreator();
+				String itemName = itemList.get(i).getItemName();
+				String description = itemList.get(i).getDescription();
+				double rating= itemList.get(i).getRating();
+				String genre = itemList.get(i).getGenre();
+				int yearPublished= itemList.get(i).getYearPublished();
+				double retail= itemList.get(i).getRetail();
+				int maxTime= itemList.get(i).getMaxTime();
+				int checkoutTime= itemList.get(i).getCheckoutTime();
+				boolean isNew=itemList.get(i).isNew();
+				int numCopies=itemList.get(i).getNumCopies();
+				String type=itemList.get(i).getType();
+				bookDetails.put("creator",creator);
+				bookDetails.put("itemName",itemName);
+				bookDetails.put("description",description);
+				bookDetails.put("rating",rating);
+				bookDetails.put("genre",genre);
+				bookDetails.put("yearPublished", yearPublished);
+				bookDetails.put("retail",retail);
+				bookDetails.put("maxTime", maxTime);
+				bookDetails.put("checkoutTime", checkoutTime);
+				bookDetails.put("isNew", isNew);
+				bookDetails.put("numCopies", numCopies);
+				bookDetails.put("type", type);
+				jsonArray.add(bookDetails);
+				bookDetails=new JSONObject();
+			}
+			
+			jsonArray.add(bookDetails);
+			JSONObject mainBook=new JSONObject();
+			mainBook.put("book",jsonArray);
+			FileWriter file = new FileWriter("Library/src/books1.json");
+            file.write(mainBook.toString());
+            file.flush();
+            file.close();
+         
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
 	public static void editBook()
 	{
 		try {
