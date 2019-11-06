@@ -47,7 +47,7 @@ public class JsonIO {
 	}
 
 	public static ArrayList loadUsers() {
-		ArrayList users = new ArrayList<User>();
+		ArrayList<User> users = new ArrayList<User>();
 		//Temp item list
 		ArrayList<Item> itemList = new ArrayList<Item>();
 		
