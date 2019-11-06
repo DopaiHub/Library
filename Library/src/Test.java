@@ -18,6 +18,7 @@ public class Test {
 		{
 			System.out.println(user.firstName + "'s balance: " + user.getBalance());
 			System.out.println(user.firstName + "'s item limit: " +user.getLimit());
+			System.out.println(user.getItemList().toString());
 		} 
 	}
 

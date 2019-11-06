@@ -80,7 +80,7 @@ public class JsonIO {
 				String password = (String)userJSONIO.get("password");
 				int itemLimit = 5;
 				double balance = 5.00;
-				String type=(String)userJSONIO.get("type");
+				String type=(String)userJSONIO.get("userType");
 				if(type.equalsIgnoreCase("adult"))
 				{
 					
