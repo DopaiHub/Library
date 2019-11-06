@@ -6,7 +6,7 @@ public class Test {
 		// TODO Auto-generated method stub
 	//	JsonIO.editBook();
 		ArrayList<Item> items=JsonIO.loadItems();
-		ArrayList<Adult> adults = JsonIO.loadUsers();
+		ArrayList<User> users = JsonIO.loadUsers();
 		for(Item item : items)
 		{
 			System.out.println(item.toString());
@@ -14,10 +14,10 @@ public class Test {
 		
 		System.out.println("\n" + "--------------------" );
 		System.out.println("\n" + "User Tests:" );
-		for(Adult adult : adults)
+		for(User user : users)
 		{
-			System.out.println(adult.firstName + "'s balance: " + adult.getBalance());
-			System.out.println(adult.firstName + "'s item limit: " +adult.getLimit());
+			System.out.println(user.firstName + "'s balance: " + user.getBalance());
+			System.out.println(user.firstName + "'s item limit: " +user.getLimit());
 		} 
 	}
 

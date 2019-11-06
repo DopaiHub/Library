@@ -1,0 +1,12 @@
+{"user":[
+  {
+  	"firstName":"John",
+  	"lastName":"Doe",
+    "address":"123 Main street",
+    "phoneNumber":1234567,
+    "email":"JD@email.com",
+  	"password":"123",
+    "itemLimit":5,
+    "balance":5.00
+  }
+]}
