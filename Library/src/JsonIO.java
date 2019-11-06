@@ -56,7 +56,7 @@ public class JsonIO {
 	}
 
 
-	public static ArrayList loadUsers(String userType) {
+	public static ArrayList<User> loadUsers(String userType) {
 		ArrayList<User> users = new ArrayList<User>();
 		//Temp item list
 		ArrayList<Item> itemList = new ArrayList<Item>();
@@ -119,8 +119,8 @@ public class JsonIO {
 			
 
 			JSONArray jsonArray=new JSONArray();
-			JSONObject bookDetails= new JSONObject();
-			JSONObject book=new JSONObject();
+			JSONObject itemDetails= new JSONObject();
+			JSONObject item =new JSONObject();
 			for(int i=0; i < itemList.size(); i++) {
 				String creator = itemList.get(i).getCreator();
 				String itemName = itemList.get(i).getItemName();
@@ -134,23 +134,23 @@ public class JsonIO {
 				boolean isNew=itemList.get(i).isNew();
 				int numCopies=itemList.get(i).getNumCopies();
 				String type=itemList.get(i).getType();
-				bookDetails.put("creator",creator);
-				bookDetails.put("itemName",itemName);
-				bookDetails.put("description",description);
-				bookDetails.put("rating",rating);
-				bookDetails.put("genre",genre);
-				bookDetails.put("yearPublished", yearPublished);
-				bookDetails.put("retail",retail);
-				bookDetails.put("maxTime", maxTime);
-				bookDetails.put("checkoutTime", checkoutTime);
-				bookDetails.put("isNew", isNew);
-				bookDetails.put("numCopies", numCopies);
-				bookDetails.put("type", type);
-				jsonArray.add(bookDetails);
-				bookDetails=new JSONObject();
+				itemDetails.put("creator",creator);
+				itemDetails.put("itemName",itemName);
+				itemDetails.put("description",description);
+				itemDetails.put("rating",rating);
+				itemDetails.put("genre",genre);
+				itemDetails.put("yearPublished", yearPublished);
+				itemDetails.put("retail",retail);
+				itemDetails.put("maxTime", maxTime);
+				itemDetails.put("checkoutTime", checkoutTime);
+				itemDetails.put("isNew", isNew);
+				itemDetails.put("numCopies", numCopies);
+				itemDetails.put("type", type);
+				jsonArray.add(itemDetails);
+				itemDetails=new JSONObject();
 			}
 			
-			jsonArray.add(bookDetails);
+			jsonArray.add(itemDetails);
 			JSONObject mainBook=new JSONObject();
 			mainBook.put("book",jsonArray);
 			FileWriter file = new FileWriter("Library/src/books1.json");
