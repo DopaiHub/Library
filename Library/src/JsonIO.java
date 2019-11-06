@@ -11,7 +11,7 @@ public class JsonIO {
 	private static final String booksFile="books.json";
 	
 	public static ArrayList<Item> loadItems(String itemType) {
-		ArrayList<Item> books = new ArrayList<Item>();
+		ArrayList<Item> items = new ArrayList<Item>();
 		
 		try {
 			FileReader reader = new FileReader("Library/src/books1.json");
@@ -35,10 +35,18 @@ public class JsonIO {
 				String type=(String)bookJSONIO.get("type");
 				
 				if(itemType.equalsIgnoreCase("book"))
-				books.add(new Book(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type));
+					items.add(new Book(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type));
+				else if (itemType.equalsIgnoreCase("ebook"))
+					items.add(new Ebook(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type));
+				else if (itemType.equalsIgnoreCase("audiobook"))
+					items.add(new Audiobook(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type));
+				else if (itemType.equalsIgnoreCase("dvd"))
+					items.add(new DVD(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type));
+				else if (itemType.equalsIgnoreCase("magazine"))
+					items.add(new Magazine(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type));
 			}
 			
-			return books;
+			return items;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -89,7 +97,7 @@ public class JsonIO {
 							phoneNumber, email, age, password,
 							itemLimit, balance, itemList));
 				}
-				else if(userType.equalsIgnoreCase("Kid"))
+				else if(userType.equalsIgnoreCase("kid"))
 				{
 					users.add(new Kid(firstName, lastName, address,
 							phoneNumber, email, age, password,
