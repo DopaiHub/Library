@@ -8,16 +8,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 public class JsonIO {
 	
-	private static final String booksFile="books.json";
+	private static final String itemFile="Library/src/items.json";
+	private static final String userFile="Library/src/user.json";
 	
 	public static ArrayList<Item> loadItems(String itemType) {
 		ArrayList<Item> items = new ArrayList<Item>();
 		
 		try {
-			FileReader reader = new FileReader("Library/src/books1.json");
+			FileReader reader = new FileReader(itemFile);
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
-			JSONArray bookJSON = (JSONArray)jsonData.get("book");
+			JSONArray bookJSON = (JSONArray)jsonData.get("item");
 			
 			for(int i=0; i < bookJSON.size(); i++) {
 				JSONObject bookJSONIO = (JSONObject)bookJSON.get(i);
@@ -34,15 +35,15 @@ public class JsonIO {
 				int numCopies=(int)(long)bookJSONIO.get("numCopies");
 				String type=(String)bookJSONIO.get("type");
 				
-				if(itemType.equalsIgnoreCase("book"))
+				if(type.equalsIgnoreCase("book"))
 					items.add(new Book(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type));
-				else if (itemType.equalsIgnoreCase("ebook"))
+				else if (type.equalsIgnoreCase("ebook"))
 					items.add(new Ebook(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type));
-				else if (itemType.equalsIgnoreCase("audiobook"))
+				else if (type.equalsIgnoreCase("audiobook"))
 					items.add(new Audiobook(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type));
-				else if (itemType.equalsIgnoreCase("dvd"))
+				else if (type.equalsIgnoreCase("dvd"))
 					items.add(new DVD(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type));
-				else if (itemType.equalsIgnoreCase("magazine"))
+				else if (type.equalsIgnoreCase("magazine"))
 					items.add(new Magazine(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type));
 			}
 			
@@ -56,52 +57,53 @@ public class JsonIO {
 	}
 
 
-	public static ArrayList loadUsers(String userType) {
+	public static ArrayList loadUsers() {
 		ArrayList<User> users = new ArrayList<User>();
 		//Temp item list
 		ArrayList<Item> itemList = new ArrayList<Item>();
 		
 		try {
-			FileReader reader = new FileReader("Library/src/adults.json");
+			FileReader reader = new FileReader(userFile);
 			JSONParser parser = new JSONParser();
 			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
-			JSONArray bookJSON = (JSONArray)jsonData.get("adult");
+			JSONArray userJSON = (JSONArray)jsonData.get("user");
 			
-			for(int i=0; i < bookJSON.size(); i++) {
-				JSONObject bookJSONIO = (JSONObject)bookJSON.get(i);
-				String firstName = (String)bookJSONIO.get("firstName");
-				String lastName = (String)bookJSONIO.get("lastName");
-				String address = (String)bookJSONIO.get("address");
+			for(int i=0; i < userJSON.size(); i++) {
+				JSONObject userJSONIO = (JSONObject)userJSON.get(i);
+				String firstName = (String)userJSONIO.get("firstName");
+				String lastName = (String)userJSONIO.get("lastName");
+				String address = (String)userJSONIO.get("address");
 				int phoneNumber = 1234567;
-				String email = (String)bookJSONIO.get("email");
+				String email = (String)userJSONIO.get("email");
 				int age= 30;
-				String password = (String)bookJSONIO.get("password");
+				String password = (String)userJSONIO.get("password");
 				int itemLimit = 5;
 				double balance = 5.00;
-				if(userType.equalsIgnoreCase("adult"))
+				String type=(String)userJSONIO.get("type");
+				if(type.equalsIgnoreCase("adult"))
 				{
 					
 				users.add(new Adult(firstName, lastName, address,
 						phoneNumber, email, age, password,
-						itemLimit, balance, itemList));
+						itemLimit, balance, itemList,type));
 				}
-				else if(userType.equalsIgnoreCase("admin"))
+				else if(type.equalsIgnoreCase("admin"))
 				{
 					users.add(new Admin(firstName, lastName, address,
 							phoneNumber, email, age, password,
-							itemLimit, balance, itemList));
+							itemLimit, balance, itemList,type));
 				}
-				else if(userType.equalsIgnoreCase("teacher"))
+				else if(type.equalsIgnoreCase("teacher"))
 				{
 					users.add(new Teacher(firstName, lastName, address,
 							phoneNumber, email, age, password,
-							itemLimit, balance, itemList));
+							itemLimit, balance, itemList,type));
 				}
-				else if(userType.equalsIgnoreCase("kid"))
+				else if(type.equalsIgnoreCase("kid"))
 				{
 					users.add(new Kid(firstName, lastName, address,
 							phoneNumber, email, age, password,
-							itemLimit, balance, itemList));
+							itemLimit, balance, itemList,type));
 				}
 			}
 			
@@ -119,8 +121,8 @@ public class JsonIO {
 			
 
 			JSONArray jsonArray=new JSONArray();
-			JSONObject bookDetails= new JSONObject();
-			JSONObject book=new JSONObject();
+			JSONObject itemDetails= new JSONObject();
+			JSONObject item=new JSONObject();
 			for(int i=0; i < itemList.size(); i++) {
 				String creator = itemList.get(i).getCreator();
 				String itemName = itemList.get(i).getItemName();
@@ -134,27 +136,27 @@ public class JsonIO {
 				boolean isNew=itemList.get(i).isNew();
 				int numCopies=itemList.get(i).getNumCopies();
 				String type=itemList.get(i).getType();
-				bookDetails.put("creator",creator);
-				bookDetails.put("itemName",itemName);
-				bookDetails.put("description",description);
-				bookDetails.put("rating",rating);
-				bookDetails.put("genre",genre);
-				bookDetails.put("yearPublished", yearPublished);
-				bookDetails.put("retail",retail);
-				bookDetails.put("maxTime", maxTime);
-				bookDetails.put("checkoutTime", checkoutTime);
-				bookDetails.put("isNew", isNew);
-				bookDetails.put("numCopies", numCopies);
-				bookDetails.put("type", type);
-				jsonArray.add(bookDetails);
-				bookDetails=new JSONObject();
+				itemDetails.put("creator",creator);
+				itemDetails.put("itemName",itemName);
+				itemDetails.put("description",description);
+				itemDetails.put("rating",rating);
+				itemDetails.put("genre",genre);
+				itemDetails.put("yearPublished", yearPublished);
+				itemDetails.put("retail",retail);
+				itemDetails.put("maxTime", maxTime);
+				itemDetails.put("checkoutTime", checkoutTime);
+				itemDetails.put("isNew", isNew);
+				itemDetails.put("numCopies", numCopies);
+				itemDetails.put("type", type);
+				jsonArray.add(itemDetails);
+				itemDetails=new JSONObject();
 			}
 			
-			jsonArray.add(bookDetails);
-			JSONObject mainBook=new JSONObject();
-			mainBook.put("book",jsonArray);
-			FileWriter file = new FileWriter("Library/src/books1.json");
-            file.write(mainBook.toString());
+			jsonArray.add(itemDetails);
+			JSONObject mainItem=new JSONObject();
+			mainItem.put("item",jsonArray);
+			FileWriter file = new FileWriter(itemFile);
+            file.write(mainItem.toString());
             file.flush();
             file.close();
          
