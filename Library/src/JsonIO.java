@@ -9,7 +9,7 @@ import java.io.IOException;
 public class JsonIO {
 	
 	private static final String itemFile="Library/src/items.json";
-	private static final String userFile="Library/src/user.json";
+	private static final String userFile="Library/src/users.json";
 	
 	public static ArrayList<Item> loadItems() {
 		ArrayList<Item> items = new ArrayList<Item>();
@@ -158,6 +158,54 @@ public class JsonIO {
 			mainItem.put("item",jsonArray);
 			FileWriter file = new FileWriter(itemFile);
             file.write(mainItem.toString());
+            file.flush();
+            file.close();
+         
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	public static void writeUser(ArrayList<User> userList)
+	{
+		try {
+			
+
+			JSONArray jsonArray=new JSONArray();
+			JSONObject userDetails= new JSONObject();
+			JSONObject user=new JSONObject();
+			for(int i=0; i < userList.size(); i++) {
+				String firstName = userList.get(i).getFirstName();
+				String lastName = userList.get(i).getLastName();
+				String address = userList.get(i).getAddress();
+				int phoneNumber= userList.get(i).getPhoneNumber();
+				String email = userList.get(i).getEmail();
+				int age= userList.get(i).getAge();
+				String password=userList.get(i).getPassword();
+				int itemLimit=userList.get(i).getItemLimit();
+				double balance=userList.get(i).getBalance();
+				ArrayList<Item> itemL=new ArrayList<Item>();
+				String type=userList.get(i).getUserType();
+				userDetails.put("firstName",firstName);
+				userDetails.put("lastName",lastName);
+				userDetails.put("address",address);
+				userDetails.put("phoneNumber",phoneNumber);
+				userDetails.put("email",email);
+				userDetails.put("age",age);
+				userDetails.put("password",password);
+				userDetails.put("itemLimit",itemLimit);
+				userDetails.put("balance",balance);
+				userDetails.put("userType",type);
+				userDetails.put("itemList",itemL);
+				jsonArray.add(userDetails);
+				userDetails=new JSONObject();
+			}
+			
+			jsonArray.add(userDetails);
+			JSONObject mainUser=new JSONObject();
+			mainUser.put("user",jsonArray);
+			FileWriter file = new FileWriter(userFile);
+            file.write(mainUser.toString());
             file.flush();
             file.close();
          
