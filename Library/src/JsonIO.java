@@ -47,6 +47,7 @@ public class JsonIO {
 		return null;
 	}
 
+
 	public static ArrayList loadUsers(String userType) {
 		ArrayList users = new ArrayList<User>();
 		//Temp item list
