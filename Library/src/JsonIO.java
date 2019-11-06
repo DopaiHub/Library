@@ -46,8 +46,8 @@ public class JsonIO {
 		return null;
 	}
 
-	public static ArrayList<Adult> loadUsers() {
-		ArrayList<Adult> adults = new ArrayList<Adult>();
+	public static <T> ArrayList<T> loadUsers() {
+		ArrayList<T> adults = new ArrayList<T>();
 		//Temp item list
 		ArrayList<Item> itemList = new ArrayList<Item>();
 		
@@ -68,7 +68,7 @@ public class JsonIO {
 				String password = (String)bookJSONIO.get("password");
 				int itemLimit = 5;
 				double balance = 5.00;
-				adults.add(new Adult(firstName, lastName, address,
+				adults.add((T) new Adult(firstName, lastName, address,
 						phoneNumber, email, age, password,
 						itemLimit, balance, itemList));
 			}
