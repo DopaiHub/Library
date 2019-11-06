@@ -1,17 +1,17 @@
 
-public class Item {
-	private String creator;
-	private String itemName;
-	private String description;
-	private double rating;
-	private String genre;
-	private int yearPublished;
-	private double retail;
-	private int maxTime;
-	private int checkoutTime;
-	private boolean isNew;
-	private int numCopies;
-	private String type;
+public abstract class Item {
+	protected String creator;
+	protected String itemName;
+	protected String description;
+	protected double rating;
+	protected String genre;
+	protected int yearPublished;
+	protected double retail;
+	protected int maxTime;
+	protected int checkoutTime;
+	protected boolean isNew;
+	protected int numCopies;
+	protected String type;
 	
 	public Item()
 	{

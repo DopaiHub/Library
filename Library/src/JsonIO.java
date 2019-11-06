@@ -10,7 +10,7 @@ public class JsonIO {
 	
 	private static final String booksFile="books.json";
 	
-	public static ArrayList<Item> loadItems() {
+	public static ArrayList<Item> loadItems(String itemType) {
 		ArrayList<Item> books = new ArrayList<Item>();
 		
 		try {
@@ -34,7 +34,8 @@ public class JsonIO {
 				int numCopies=(int)(long)bookJSONIO.get("numCopies");
 				String type=(String)bookJSONIO.get("type");
 				
-				books.add(new Item(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type));
+				if(itemType.equalsIgnoreCase("book"))
+				books.add(new Book(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type));
 			}
 			
 			return books;
@@ -46,7 +47,7 @@ public class JsonIO {
 		return null;
 	}
 
-	public static ArrayList loadUsers() {
+	public static ArrayList loadUsers(String userType) {
 		ArrayList users = new ArrayList<User>();
 		//Temp item list
 		ArrayList<Item> itemList = new ArrayList<Item>();
@@ -68,9 +69,31 @@ public class JsonIO {
 				String password = (String)bookJSONIO.get("password");
 				int itemLimit = 5;
 				double balance = 5.00;
-				users.add(new User(firstName, lastName, address,
+				if(userType.equalsIgnoreCase("adult"))
+				{
+					
+				users.add(new Adult(firstName, lastName, address,
 						phoneNumber, email, age, password,
 						itemLimit, balance, itemList));
+				}
+				else if(userType.equalsIgnoreCase("admin"))
+				{
+					users.add(new Admin(firstName, lastName, address,
+							phoneNumber, email, age, password,
+							itemLimit, balance, itemList));
+				}
+				else if(userType.equalsIgnoreCase("teacher"))
+				{
+					users.add(new Teacher(firstName, lastName, address,
+							phoneNumber, email, age, password,
+							itemLimit, balance, itemList));
+				}
+				else if(userType.equalsIgnoreCase("Kid"))
+				{
+					users.add(new Kid(firstName, lastName, address,
+							phoneNumber, email, age, password,
+							itemLimit, balance, itemList));
+				}
 			}
 			
 			return users;
