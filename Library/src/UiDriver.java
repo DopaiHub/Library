@@ -9,10 +9,28 @@ public class UiDriver {
 		//TODO Connect case statements with SystemShell API
 		
 		
+		Scanner scan = new Scanner(System.in);
 		System.out.println("Welcome to the Library System!");
 		System.out.println("------------------------------" + "\n");
+		boolean login = false;
+		while(login == false) {
+			System.out.println("1. Login");
+			System.out.println("2. Create Account");
 		
-		Scanner scan = new Scanner(System.in);
+			int loginChoice = scan.nextInt();
+			switch (loginChoice) {
+			case 1: 
+        		System.out.println("\n" + "Logging in is not set up yet." + "\n");
+        		login = true;
+            	break;
+        	case 2: 
+        		System.out.println("\n" + "Account creation is not set up yet." + "\n");
+        		login = true;
+            	break;
+			}
+		}
+		
+		
 		boolean run = true;
 		while(run == true) {
 			System.out.println("Please choose an operation." + "\n");
