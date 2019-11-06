@@ -86,25 +86,25 @@ public class JsonIO {
 					
 				users.add(new Adult(firstName, lastName, address,
 						phoneNumber, email, age, password,
-						itemLimit, balance, itemList,type));
+						itemLimit, balance,type,itemList));
 				}
 				else if(type.equalsIgnoreCase("admin"))
 				{
 					users.add(new Admin(firstName, lastName, address,
 							phoneNumber, email, age, password,
-							itemLimit, balance, itemList,type));
+							itemLimit, balance,type, itemList));
 				}
 				else if(type.equalsIgnoreCase("teacher"))
 				{
 					users.add(new Teacher(firstName, lastName, address,
 							phoneNumber, email, age, password,
-							itemLimit, balance, itemList,type));
+							itemLimit, balance,type, itemList));
 				}
 				else if(type.equalsIgnoreCase("kid"))
 				{
 					users.add(new Kid(firstName, lastName, address,
 							phoneNumber, email, age, password,
-							itemLimit, balance, itemList,type));
+							itemLimit, balance,type, itemList));
 				}
 			}
 			
