@@ -81,30 +81,31 @@ public class JsonIO {
 				int itemLimit = 5;
 				double balance = 5.00;
 				String type=(String)userJSONIO.get("userType");
+				ArrayList<Item> itemL=(ArrayList<Item>) userJSONIO.get("itemList");
 				if(type.equalsIgnoreCase("adult"))
 				{
 					
 				users.add(new Adult(firstName, lastName, address,
 						phoneNumber, email, age, password,
-						itemLimit, balance,type,itemList));
+						itemLimit, balance,type,itemL));
 				}
 				else if(type.equalsIgnoreCase("admin"))
 				{
 					users.add(new Admin(firstName, lastName, address,
 							phoneNumber, email, age, password,
-							itemLimit, balance,type, itemList));
+							itemLimit, balance,type, itemL));
 				}
 				else if(type.equalsIgnoreCase("teacher"))
 				{
 					users.add(new Teacher(firstName, lastName, address,
 							phoneNumber, email, age, password,
-							itemLimit, balance,type, itemList));
+							itemLimit, balance,type, itemL));
 				}
 				else if(type.equalsIgnoreCase("kid"))
 				{
 					users.add(new Kid(firstName, lastName, address,
 							phoneNumber, email, age, password,
-							itemLimit, balance,type, itemList));
+							itemLimit, balance,type, itemL));
 				}
 			}
 			
@@ -184,7 +185,7 @@ public class JsonIO {
 				String password=userList.get(i).getPassword();
 				int itemLimit=userList.get(i).getItemLimit();
 				double balance=userList.get(i).getBalance();
-				ArrayList<Item> itemL=new ArrayList<Item>();
+				ArrayList<Item> itemL=JsonIO.loadItems();
 				String type=userList.get(i).getUserType();
 				userDetails.put("firstName",firstName);
 				userDetails.put("lastName",lastName);

@@ -1,29 +1,25 @@
-{"user":[
-  {
-  	"firstName":"John",
-  	"lastName":"Doe",
-    "address":"123 Main street",
-    "phoneNumber":1234567,
-    "email":"JD@email.com",
-  	"password":"123",
-    "itemLimit":5,
-    "balance":5.00,
-    "userType":"kid",
-    "item":[
-      {
-      	"creator":"Dr. Seuss",
-      	"itemName":"The Cat in the Hat",
-        "description":"Poetry book",
-        "rating": 3,
-        "genre":"Children",
-      	"yearPublished": 1957,
-        "retail": 7.50,
-        "maxTime": 30,
-        "checkoutTime":0,
-        "isNew":false,
-        "numCopies":1,
-        "type":"book"
-      }
-    ]
-  }
-]}
+{"user":[{"firstName":"John","lastName":"Doe","password":"123","address":"123 Main street","phoneNumber":1234567,"balance":5.0,"itemLimit":5,"itemList":[
+Creator:Dr. Seuss
+ItemName:The Cat in the Hat
+Description:Poetry book
+Rating:3.0
+Genre:Children
+YearPublished:1957
+Retail:7.5
+MaxTime:30
+CheckoutTime:0
+isNew:false
+Numcopies:1
+Type:book,
+Creator:Margaret Mitchell
+ItemName:Gone With The Wind
+Description:Historical Romantic novel in the Civil War
+Rating:4.0
+Genre:Historical Fiction
+YearPublished:1936
+Retail:15.71
+MaxTime:30
+CheckoutTime:0
+isNew:true
+Numcopies:1
+Type:book],"userType":"kid","email":"JD@email.com","age":30},{}]}

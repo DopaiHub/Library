@@ -7,6 +7,7 @@ public class Test {
 	//	JsonIO.editBook();
 		ArrayList<Item> items=JsonIO.loadItems();
 		ArrayList<User> users = JsonIO.loadUsers();
+		JsonIO.writeUser(users);
 		for(Item item : items)
 		{
 			System.out.println(item.toString());
@@ -18,7 +19,7 @@ public class Test {
 		{
 			System.out.println(user.firstName + "'s balance: " + user.getBalance());
 			System.out.println(user.firstName + "'s item limit: " +user.getLimit());
-			System.out.println(user.getItemList().toString());
+			System.out.println(user.getItemList().get(0).toString());
 		} 
 	}
 
