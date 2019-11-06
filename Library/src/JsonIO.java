@@ -11,7 +11,7 @@ public class JsonIO {
 	private static final String itemFile="Library/src/items.json";
 	private static final String userFile="Library/src/user.json";
 	
-	public static ArrayList<Item> loadItems(String itemType) {
+	public static ArrayList<Item> loadItems() {
 		ArrayList<Item> items = new ArrayList<Item>();
 		
 		try {
@@ -57,7 +57,8 @@ public class JsonIO {
 	}
 
 
-	public static ArrayList loadUsers() {
+
+	public static ArrayList<User> loadUsers() {
 		ArrayList<User> users = new ArrayList<User>();
 		//Temp item list
 		ArrayList<Item> itemList = new ArrayList<Item>();
@@ -122,7 +123,11 @@ public class JsonIO {
 
 			JSONArray jsonArray=new JSONArray();
 			JSONObject itemDetails= new JSONObject();
+<<<<<<< HEAD
 			JSONObject item=new JSONObject();
+=======
+			JSONObject item =new JSONObject();
+>>>>>>> 705a870899d2e9c37ca688802c89c5a93c6fbc47
 			for(int i=0; i < itemList.size(); i++) {
 				String creator = itemList.get(i).getCreator();
 				String itemName = itemList.get(i).getItemName();
@@ -153,10 +158,17 @@ public class JsonIO {
 			}
 			
 			jsonArray.add(itemDetails);
+<<<<<<< HEAD
 			JSONObject mainItem=new JSONObject();
 			mainItem.put("item",jsonArray);
 			FileWriter file = new FileWriter(itemFile);
             file.write(mainItem.toString());
+=======
+			JSONObject mainBook=new JSONObject();
+			mainBook.put("book",jsonArray);
+			FileWriter file = new FileWriter("Library/src/books1.json");
+            file.write(mainBook.toString());
+>>>>>>> 705a870899d2e9c37ca688802c89c5a93c6fbc47
             file.flush();
             file.close();
          

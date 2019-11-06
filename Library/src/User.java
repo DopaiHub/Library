@@ -10,6 +10,7 @@ public abstract class User {
 	protected String password;
 	protected int itemLimit;
 	protected double balance;
+	protected String userType;
 	protected ArrayList<Item> itemList;
 
 	public User()
@@ -19,7 +20,7 @@ public abstract class User {
 	
 	public User(String firstName, String lastName, String address,
 			int phoneNumber, String email, int age, String password,
-			int itemLimit, double balance, ArrayList<Item> itemList)
+			int itemLimit, double balance, String userType, ArrayList<Item> itemList)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -30,6 +31,7 @@ public abstract class User {
 		this.password = password;
 		this.itemLimit = itemLimit;
 		this.balance = balance;
+		this.userType = userType;
 		this.itemList = itemList;
 	}
 	

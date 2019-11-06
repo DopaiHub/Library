@@ -4,11 +4,11 @@ public class Admin extends User {
 
 	public Admin(String firstName, String lastName, String address,
 			int phoneNumber, String email, int age, String password,
-			int itemLimit, double balance, ArrayList<Item> itemList)
+			int itemLimit, double balance, String userType, ArrayList<Item> itemList)
 	{
 		super(firstName, lastName, address,
 				phoneNumber, email, age, password,
-				itemLimit, balance, itemList);
+				itemLimit, balance, userType, itemList);
 	}
 	
 	public double getBalance()
