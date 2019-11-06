@@ -1,7 +1,7 @@
 import java.util.ArrayList;
-public class SystemShell<T> {
+public class SystemShell {
 	protected ArrayList<Item> jsonItemList;
-	protected ArrayList<T> jsonUserList;
+	protected ArrayList<User> jsonUserList;
 	protected User person;
 	private static SystemShell shell;
 	
@@ -32,12 +32,19 @@ public class SystemShell<T> {
 	
 	public User loginUser(String uEmail, String uPass)
 	{
-		return null;
+		while (jsonUserList.iterator().hasNext())
+		{
+			person = jsonUserList.iterator().next();
+			if (person.email.equals(uEmail) && person.password.equals(uPass))
+				return person;
+		}
+		person = null;
+		return person;
 	}
 	
 	public void logoutUser()
 	{
-		
+		person = null;
 	}
 	
 	private void returnItem(Item item)
