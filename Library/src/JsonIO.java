@@ -158,7 +158,7 @@ public class JsonIO {
 			JSONObject mainItem=new JSONObject();
 			mainItem.put("item",jsonArray);
 			FileWriter file = new FileWriter(itemFile);
-            file.write(mainItem.toString());
+            file.write(mainItem.toJSONString());
             file.flush();
             file.close();
          
@@ -171,7 +171,12 @@ public class JsonIO {
 	{
 		try {
 			
-
+//			FileReader reader = new FileReader(itemFile);
+//			JSONParser parser = new JSONParser();
+//			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
+//			JSONArray bookJSON = (JSONArray)jsonData.get("item");
+			
+			JSONParser parser = new JSONParser();
 			JSONArray jsonArray=new JSONArray();
 			JSONObject userDetails= new JSONObject();
 			JSONObject user=new JSONObject();
@@ -187,16 +192,32 @@ public class JsonIO {
 				double balance=userList.get(i).getBalance();
 				ArrayList<Item> itemL=JsonIO.loadItems();
 				String type=userList.get(i).getUserType();
-				userDetails.put("firstName",firstName);
-				userDetails.put("lastName",lastName);
-				userDetails.put("address",address);
+				userDetails.put("firstName",firstName.toString());
+				userDetails.put("lastName",lastName.toString());
+				userDetails.put("address",address.toString());
 				userDetails.put("phoneNumber",phoneNumber);
-				userDetails.put("email",email);
+				userDetails.put("email",email.toString());
 				userDetails.put("age",age);
-				userDetails.put("password",password);
+				userDetails.put("password",password.toString());
 				userDetails.put("itemLimit",itemLimit);
 				userDetails.put("balance",balance);
 				userDetails.put("userType",type);
+
+				for(int i=0; i < bookJSON.size(); i++) {
+					JSONObject bookJSONIO = (JSONObject)bookJSON.get(i);
+					String creator = (String)bookJSONIO.get("creator");
+					String itemName = (String)bookJSONIO.get("itemName");
+					String description = (String)bookJSONIO.get("description");
+					double rating= (double)(long)bookJSONIO.get("rating");
+					String genre = (String)bookJSONIO.get("genre");
+					int yearPublished= (int)(long)bookJSONIO.get("yearPublished");
+					double retail= (double)bookJSONIO.get("retail");
+					int maxTime= (int)(long)bookJSONIO.get("maxTime");
+					int checkoutTime= (int)(long)bookJSONIO.get("checkoutTime");
+					boolean isNew=(boolean)bookJSONIO.get("isNew");
+					int numCopies=(int)(long)bookJSONIO.get("numCopies");
+					String type=(String)bookJSONIO.get("type");
+				
 				userDetails.put("itemList",itemL);
 				jsonArray.add(userDetails);
 				userDetails=new JSONObject();
@@ -206,7 +227,7 @@ public class JsonIO {
 			JSONObject mainUser=new JSONObject();
 			mainUser.put("user",jsonArray);
 			FileWriter file = new FileWriter(userFile);
-            file.write(mainUser.toString());
+            file.write(mainUser.toJSONString());
             file.flush();
             file.close();
          

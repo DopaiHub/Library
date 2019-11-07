@@ -4,7 +4,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-	//	JsonIO.editBook();
+		JsonIO.editBook();
 		ArrayList<Item> items=JsonIO.loadItems();
 		ArrayList<User> users = JsonIO.loadUsers();
 		JsonIO.writeUser(users);
@@ -19,7 +19,7 @@ public class Test {
 		{
 			System.out.println(user.firstName + "'s balance: " + user.getBalance());
 			System.out.println(user.firstName + "'s item limit: " +user.getLimit());
-			System.out.println(user.getItemList().get(0).toString());
+			//System.out.println(user.getItemList().get(0).toString());
 		} 
 	}
 
