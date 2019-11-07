@@ -28,7 +28,7 @@ public class JsonIO {
 				String creator = (String)bookJSONIO.get("creator");
 				String itemName = (String)bookJSONIO.get("itemName");
 				String description = (String)bookJSONIO.get("description");
-				double rating= (double)(long)bookJSONIO.get("rating");
+				double rating= (double)bookJSONIO.get("rating");
 				String genre = (String)bookJSONIO.get("genre");
 				int yearPublished= (int)(long)bookJSONIO.get("yearPublished");
 				double retail= (double)bookJSONIO.get("retail");
@@ -90,9 +90,10 @@ public class JsonIO {
 				Iterator<Long> iterator=itemIDS.iterator();
 				int j=0;
 				while(iterator.hasNext()) {
-						itemL[j]=(int)(long)(iterator.next());
+						itemL[j]=(int)(long)iterator.next();
 						j++;
 				}
+
 				if(type.equalsIgnoreCase("adult"))
 				{
 					
@@ -134,7 +135,7 @@ public class JsonIO {
 			
 
 			JSONArray jsonArray=new JSONArray();
-			JSONObject itemDetails= new JSONObject();
+			JSONObject itemDetails= new JSONObject();;
 			JSONObject item=new JSONObject();
 			for(int i=0; i < itemList.size(); i++) {
 				String creator = itemList.get(i).getCreator();
@@ -149,6 +150,8 @@ public class JsonIO {
 				boolean isNew=itemList.get(i).isNew();
 				int numCopies=itemList.get(i).getNumCopies();
 				String type=itemList.get(i).getType();
+				int id=itemList.get(i).getId();
+				itemDetails= new JSONObject();
 				itemDetails.put("creator",creator);
 				itemDetails.put("itemName",itemName);
 				itemDetails.put("description",description);
@@ -161,11 +164,9 @@ public class JsonIO {
 				itemDetails.put("isNew", isNew);
 				itemDetails.put("numCopies", numCopies);
 				itemDetails.put("type", type);
+				itemDetails.put("id", id);
 				jsonArray.add(itemDetails);
-				itemDetails=new JSONObject();
 			}
-			
-			jsonArray.add(itemDetails);
 			JSONObject mainItem=new JSONObject();
 			mainItem.put("item",jsonArray);
 			FileWriter file = new FileWriter(itemFile);
@@ -204,6 +205,7 @@ public class JsonIO {
 					idList.add(itemL[j]);
 				}
 				String type=userList.get(i).getUserType();
+				userDetails=new JSONObject();
 				userDetails.put("firstName",firstName);
 				userDetails.put("lastName",lastName);
 				userDetails.put("address",address);
@@ -216,10 +218,8 @@ public class JsonIO {
 				userDetails.put("userType",type);
 				userDetails.put("itemList",idList);
 				jsonArray.add(userDetails);
-				userDetails=new JSONObject();
 			}
 			
-			jsonArray.add(userDetails);
 			JSONObject mainUser=new JSONObject();
 			mainUser.put("user",jsonArray);
 			FileWriter file = new FileWriter(userFile);

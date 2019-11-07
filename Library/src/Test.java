@@ -8,6 +8,7 @@ public class Test {
 		ArrayList<Item> items=JsonIO.loadItems();
 		ArrayList<User> users = JsonIO.loadUsers();
 		JsonIO.writeUser(users);
+		JsonIO.writeItem(items);
 		for(Item item : items)
 		{
 			System.out.println(item.toString());
