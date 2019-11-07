@@ -12,7 +12,14 @@ public abstract class Item {
 	protected boolean isNew;
 	protected int numCopies;
 	protected String type;
+	protected int id;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public Item()
 	{
 		
@@ -79,7 +86,7 @@ public abstract class Item {
 	}
 	public Item(String creator,String itemName,String description,double rating,
 			String genre,int yearPublished,double retail,int maxTime,int checkoutTime,boolean isNew,
-			int numCopies,String type)
+			int numCopies,String type,int id)
 	{
 		this.creator=creator;
 		this.itemName=itemName;
@@ -93,6 +100,7 @@ public abstract class Item {
 		this.isNew=isNew;
 		this.numCopies=numCopies;
 		this.type=type;
+		this.id=id;
 	}
 	public int getNumCopies() {
 		return numCopies;
