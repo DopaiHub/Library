@@ -53,12 +53,40 @@ public class SystemShell {
 		
 		
 		
-		
 	}
 	
-	private boolean checkoutItem(Item item)
+	public void checkoutItem(int id)
 	{
-		return true;
+		if(person.getItemList().length>=person.getItemLimit())
+			System.out.println("Item list is full");
+		else if(person.getBalance()>0)
+		{
+			System.out.println("You need to pay your fine of: "+person.getBalance());
+		}
+		else if(jsonItemList.get(id-1).getNumCopies()==0)
+		{
+			for(int i=0;i<jsonItemList.get(id-1).getWaitList().length;i++)
+			{
+				String[] wait=new String[10];
+				if(jsonItemList.get(id-1).getWaitList()==null)
+				{
+					wait=jsonItemList.get(id-1).getWaitList();
+					jsonItemList.get(id-1).setWaitList(wait);
+					break;
+				}
+			}
+		}
+		else
+		{
+			for(int i=0;i<person.itemList.length;i++)
+			{
+				if(person.itemList[i]==0)
+				{
+					person.itemList[i]=id;
+					break;
+				}
+			}
+		}
 	}
 	
 	public void searchUser(User user)
@@ -89,5 +117,9 @@ public class SystemShell {
 	public void searchItemType(String iType)
 	{
 		
+	}
+	public void payFines(double amount)
+	{
+		person.setBalance(person.getBalance()-amount);
 	}
 }

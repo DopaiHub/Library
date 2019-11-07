@@ -135,7 +135,10 @@ public abstract class User {
 	}
 
 	public void setBalance(double balance) {
-		this.balance = balance;
+		if(balance>=0)
+			this.balance = balance;
+		else
+			this.balance=0;
 	}
 	
 }
