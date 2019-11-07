@@ -2,10 +2,16 @@ import java.util.Scanner;
 
 public class UiDriver {
 	
-	public static void login(String email, String password) {
+	public static void login(String email, String password, boolean found) {
 		SystemShell shell = SystemShell.launchSystem();
-		shell.loginUser(email, password);
-		System.out.println("You have called the login method.");
+		User user = shell.loginUser(email, password, found);
+		if(found == true) {
+			System.out.println("Welcome " + user.getFirstName());
+		}
+		
+		else {
+			System.out.println("Login Failed.");
+		}
 	}
 
 	public static void main(String[] args) {
@@ -20,26 +26,28 @@ public class UiDriver {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Welcome to the Library System!");
 		System.out.println("------------------------------" + "\n");
-		boolean login = false;
-		while(login == false) {
+		boolean endLogin = false;
+		while(endLogin == false) {
 			System.out.println("1. Login");
 			System.out.println("2. Create Account");
 		
 			int loginChoice = scan.nextInt();
 			switch (loginChoice) {
 			case 1:
+				boolean loggedIn = false;
         		System.out.println("\n" + "Please enter your email: ");
         		String email = scan.next();
         		System.out.println("\n" + "Please enter your password: ");
         		String password = scan.next();
-        		login(email, password);
-        		//call login
+        		login(email, password, loggedIn);
+        		if(loggedIn == true) {
+        			endLogin = true;
+        		}
         		
-        		login = true;
             	break;
         	case 2: 
         		System.out.println("\n" + "Account creation is not set up yet." + "\n");
-        		login = true;
+        		endLogin = true;
             	break;
 			}
 		}
