@@ -30,29 +30,17 @@ public class SystemShell {
 		}
 	}
 	
-	public User loginUser(String uEmail, String uPass, boolean foundUser)
+	public User loginUser(String uEmail, String uPass)
 	{
 		for (int i = 0; i < jsonUserList.size(); i ++)
 		{
 			person = jsonUserList.get(i);
 			if (person.email.equals(uEmail) && person.password.equals(uPass))
-			{
-				foundUser = true;
-				return person;
+			{return person;
 			}
 		}
-//		while (jsonUserList.iterator().hasNext())
-//		{
-//			person = jsonUserList.iterator().next();
-//			if (person.email.equals(uEmail) && person.password.equals(uPass))
-//			{
-//				foundUser = true;
-//				return person;
-//			}
-//		}
 		System.out.println("The email and/or password provided did not match any existing user emails/passwords. Please try again.");
 		person = null;
-		foundUser = false;
 		return person;
 	}
 	
