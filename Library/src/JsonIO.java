@@ -8,7 +8,6 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import java.io.FileWriter;
 import java.io.IOException;
-import com.google.gson.*;
 public class JsonIO {
 	
 	private static final String itemFile="Library/src/items.json";
