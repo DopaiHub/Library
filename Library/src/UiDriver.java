@@ -2,16 +2,18 @@ import java.util.Scanner;
 
 public class UiDriver {
 	
-	public static void login(String email, String password, boolean found) {
+	public static User login(String email, String password) {
 		SystemShell shell = SystemShell.launchSystem();
-		User user = shell.loginUser(email, password, found);
-		if(found == true) {
+		User user = shell.loginUser(email, password);
+		if(user != null) {
 			System.out.println("Welcome " + user.getFirstName());
 		}
 		
 		else {
 			System.out.println("Login Failed.");
 		}
+		
+		return user;
 	}
 
 	public static void main(String[] args) {
@@ -34,18 +36,13 @@ public class UiDriver {
 			int loginChoice = scan.nextInt();
 			switch (loginChoice) {
 			case 1:
-				boolean loggedIn = false;
         		System.out.println("\n" + "Please enter your email: ");
         		String email = scan.next();
         		System.out.println("\n" + "Please enter your password: ");
         		String password = scan.next();
-        		login(email, password, loggedIn);
-        		if(loggedIn == true) {
-        			endLogin = true;
-        		}
-        		
+        		login(email, password);
             	break;
-        	case 2: 
+        	case 2:
         		System.out.println("\n" + "Account creation is not set up yet." + "\n");
         		endLogin = true;
             	break;
