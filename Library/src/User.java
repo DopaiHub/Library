@@ -1,16 +1,16 @@
 import java.util.ArrayList;
 
-public abstract class User {
-	protected String firstName;
-	protected String lastName;
-	protected String address;
-	protected int phoneNumber;
-	protected String email;
-	protected int age;
-	protected String password;
-	protected int itemLimit;
-	protected double balance;
-	protected ArrayList<Item> itemList;
+public class User {
+	private String firstName;
+	private String lastName;
+	private String address;
+	private int phoneNumber;
+	private String email;
+	private int age;
+	private String password;
+	private int itemLimit;
+	private double balance;
+	private ArrayList<Item> itemList;
 
 	public User()
 	{
