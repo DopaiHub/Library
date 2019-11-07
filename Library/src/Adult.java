@@ -7,7 +7,7 @@ public class Adult extends User {
 	}
 	public Adult(String firstName, String lastName, String address,
 			int phoneNumber, String email, int age, String password,
-			int itemLimit, double balance, String userType, ArrayList<Item> itemList)
+			int itemLimit, double balance, String userType, int[] itemList)
 	{
 		super(firstName, lastName, address,
 				phoneNumber, email, age, password,

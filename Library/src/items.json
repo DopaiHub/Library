@@ -11,7 +11,8 @@
     "checkoutTime":0,
     "isNew":false,
     "numCopies":1,
-    "type":"book"
+    "type":"book",
+    "id":1
   },{
     "creator":"Margaret Mitchell",
   	"itemName":"Gone With The Wind",
@@ -24,6 +25,7 @@
     "checkoutTime":0,
     "isNew":true,
     "numCopies":1,
-    "type":"book"
+    "type":"book",
+    "id":2
   }
 ]}

@@ -11,7 +11,7 @@ public abstract class User {
 	protected int itemLimit;
 	protected double balance;
 	protected String userType;
-	protected ArrayList<Item> itemList;
+	protected int[] itemList;
 
 	public User()
 	{
@@ -20,7 +20,7 @@ public abstract class User {
 	
 	public User(String firstName, String lastName, String address,
 			int phoneNumber, String email, int age, String password,
-			int itemLimit, double balance, String userType, ArrayList<Item> itemList)
+			int itemLimit, double balance, String userType, int[] itemList)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -124,12 +124,13 @@ public abstract class User {
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
+	
 
-	public ArrayList<Item> getItemList() {
+	public int[] getItemList() {
 		return itemList;
 	}
 
-	public void setItemList(ArrayList<Item> itemList) {
+	public void setItemList(int[] itemList) {
 		this.itemList = itemList;
 	}
 
