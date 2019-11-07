@@ -2,7 +2,11 @@ import java.util.ArrayList;
 public class SystemShell {
 	protected ArrayList<Item> jsonItemList;
 	protected ArrayList<User> jsonUserList;
-	protected User person;
+	protected User person = null;
+	protected Admin uAdmin = null;
+	protected Teacher uTeacher = null;
+	protected Adult uAdult = null;
+	protected Kid uKid = null;
 	private static SystemShell shell;
 	
 	private SystemShell()
@@ -36,7 +40,16 @@ public class SystemShell {
 		{
 			person = jsonUserList.get(i);
 			if (person.email.equals(uEmail) && person.password.equals(uPass))
-			{return person;
+			{
+				if (person.userType.equals("Admin"))
+					uAdmin = (Admin)person;
+				else if (person.userType.equals("Teacher"))
+					uTeacher = (Teacher)person;
+				if (person.userType.equals("Adult"))
+					uAdult = (Adult)person;
+				else if (person.userType.equals("Teacher"))
+					uTeacher = (Teacher)person;
+				return person;
 			}
 		}
 		System.out.println("The email and/or password provided did not match any existing user emails/passwords. Please try again.");
