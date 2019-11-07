@@ -13,7 +13,14 @@ public abstract class Item {
 	protected int numCopies;
 	protected String type;
 	protected int id;
+	protected String[] waitList;
 	
+	public String[] getWaitList() {
+		return waitList;
+	}
+	public void setWaitList(String[] waitList) {
+		this.waitList = waitList;
+	}
 	public int getId() {
 		return id;
 	}
@@ -86,7 +93,7 @@ public abstract class Item {
 	}
 	public Item(String creator,String itemName,String description,double rating,
 			String genre,int yearPublished,double retail,int maxTime,int checkoutTime,boolean isNew,
-			int numCopies,String type,int id)
+			int numCopies,String type,int id,String[] waitList)
 	{
 		this.creator=creator;
 		this.itemName=itemName;
@@ -101,6 +108,7 @@ public abstract class Item {
 		this.numCopies=numCopies;
 		this.type=type;
 		this.id=id;
+		this.waitList=waitList;
 	}
 	public int getNumCopies() {
 		return numCopies;
