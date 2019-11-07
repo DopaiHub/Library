@@ -11,6 +11,11 @@ public class SystemShell {
 	
 	private SystemShell()
 	{
+		person = null;
+		uAdmin = null;
+		uTeacher = null;
+		uAdult = null;
+		uKid = null;
 		JsonIO json = new JsonIO();
 		jsonUserList = json.loadUsers();
 		jsonItemList = json.loadItems();
