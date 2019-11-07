@@ -12,7 +12,7 @@ public class SystemShell {
 		jsonItemList = json.loadItems();
 	}
 	
-	public SystemShell launchSystem()
+	public static SystemShell launchSystem()
 	{
 		if (shell == null)
 			shell = new SystemShell();
