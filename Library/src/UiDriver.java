@@ -1,6 +1,12 @@
 import java.util.Scanner;
 
 public class UiDriver {
+	
+	public static void login(String email, String password) {
+		SystemShell shell = SystemShell.launchSystem();
+		shell.loginUser(email, password);
+		System.out.println("You have called the login method.");
+	}
 
 	public static void main(String[] args) {
 		
@@ -8,6 +14,8 @@ public class UiDriver {
 		//TODO Add functionality to Admin users
 		//TODO Connect case statements with SystemShell API
 		
+		
+		SystemShell shell = SystemShell.launchSystem();
 		
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Welcome to the Library System!");
@@ -19,8 +27,14 @@ public class UiDriver {
 		
 			int loginChoice = scan.nextInt();
 			switch (loginChoice) {
-			case 1: 
-        		System.out.println("\n" + "Logging in is not set up yet." + "\n");
+			case 1:
+        		System.out.println("\n" + "Please enter your email: ");
+        		String email = scan.next();
+        		System.out.println("\n" + "Please enter your password: ");
+        		String password = scan.next();
+        		login(email, password);
+        		//call login
+        		
         		login = true;
             	break;
         	case 2: 
