@@ -81,9 +81,10 @@ public class SystemShell {
 		
 	}
 	
-	public void registerUser(String a, String b, String c, String d, String e)
+	public void registerUser(String userType, String firstN, String lastN, String email, String password, int age, String addr, int phoneNum)
 	{
 		
+		User newU = new User(firstN, lastN, addr, phoneNum, email, age, password, );
 	}
 	
 	public void searchItemType(String iType)
