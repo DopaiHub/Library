@@ -225,7 +225,7 @@ public class SystemShell {
 			{
 			for(int j=0;j<jsonItemList.get(i).getWaitList().length;j++)
 			{
-				if(jsonItemList.get(i).getWaitList()[i].equalsIgnoreCase(uEmail))
+				if(jsonItemList.get(i).getWaitList()[j] != null && jsonItemList.get(i).getWaitList()[j].equalsIgnoreCase(uEmail))
 				{
 					System.out.println("Your item "+jsonItemList.get(i).getItemName()+" is now availiable to be checked out");
 				}

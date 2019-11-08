@@ -89,7 +89,7 @@ public class UiDriver {
             	break;
 			}
 		}
-		
+		shell.notifyUser(you.getEmail());
 		
 		boolean run = true;
 		while(run == true) {
@@ -184,7 +184,7 @@ public class UiDriver {
 	        		String[] userWaitList = new String[10];
 	        		userItemList = shell.getUserItems();
 	        		System.out.println("Items you have checked out: ");
-	        		for(int i = 0; i < 9; i++) {
+	        		for(int i = 0; i < 10; i++) {
 	        			if(userItemList[i] != null) {
 	        			System.out.println(userItemList[i]);
 	        			}
@@ -192,7 +192,7 @@ public class UiDriver {
 	        		
 	        		userWaitList = shell.searchWaitListForUser(you.getEmail());
 	        		System.out.println("Items you are waiting on: ");
-	        		for(int i = 0; i < 9; i++) {
+	        		for(int i = 0; i < 10; i++) {
 	        			if(userWaitList[i] != null) {
 	        			System.out.println(userWaitList[i]);
 	        			}
@@ -205,6 +205,8 @@ public class UiDriver {
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
 	        	System.out.println("Shutting Down. . .");
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
+	        	//ONLY UNCOMMENT BOTTOM LINE WHEN WE ARE 100% SURE THAT THE PROGRAM FUNCITONS PROPERLY
+	        	//shell.logoutUser();
 	        	run = false;
 	            break; 
 	        } 
