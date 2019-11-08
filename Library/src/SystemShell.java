@@ -118,6 +118,18 @@ public class SystemShell {
 			}
 		}
 	}
+	public void returnItem(int id)
+	{
+		for(int i=0;i<person.itemList.length;i++)
+		{
+			if(person.itemList[i]==id)
+			{
+				person.itemList[i]=0;
+				jsonItemList.get(id-1).setNumCopies(jsonItemList.get(id-1).getNumCopies()+1);
+				System.out.println("You have returned "+jsonItemList.get(id-1).getItemName());
+			}
+		}
+	}
 	
 	public void registerUser(String firstName,String lastName,String address,
 			int phoneNumber, String email, int age, String password,String type)

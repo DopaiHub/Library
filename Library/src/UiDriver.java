@@ -130,7 +130,6 @@ public class UiDriver {
 	        		System.out.println("Enter a keyword to search: ");
 	        		String keyword = scan.next();
 	        		itemList = shell.searchItem(keyword);
-	        		System.out.println("Item list size: " + itemList.size());
 	        		for(int i = 0; i < itemList.size(); i++) {
 	        			if(itemList.get(i) != null) {
 	        				System.out.println(i + 1 + ". " + itemList.get(i).getItemName());
@@ -160,11 +159,17 @@ public class UiDriver {
 	        	}
 	            break; 
 	        case 3: 
+	        	String[] stringList=shell.getUserItems();
 	        	System.out.println("\n" + "\n");
 	        	System.out.println("------------------------------");
 	        	System.out.println("Returning an Item");
 	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n");
+	        	for(int i=0;i<you.getItemList().length;i++)
+	        	{
+	        		if(you.getItemList()[i]>0)
+	        		System.out.println((you.getItemList()[i])+" "+stringList[i]);
+	        	}
 	            break;
 	        case 4: 
 	        	boolean endList = false;
