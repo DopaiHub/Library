@@ -261,4 +261,48 @@ public class SystemShell {
 			}
 		}
 	}
+	private void addRating(String itemName,double rating)
+	{
+		for(int i=0;i<jsonItemList.size();i++)
+		{
+			if(jsonItemList.get(i).getItemName().equalsIgnoreCase(itemName))
+			{
+				jsonItemList.get(i).setRating((jsonItemList.get(i).getRating()+rating)/2);
+			}
+		}
+	}
+	public void showReviews(String itemName)
+	{
+		for(int i=0;i<jsonItemList.size();i++)
+		{
+			if(jsonItemList.get(i).getItemName().equalsIgnoreCase(itemName))
+			{
+				for(int j=0;j<jsonItemList.get(i).getReviews().length;j++)
+				{
+					System.out.println(jsonItemList.get(i).getReviews()[i]);
+				}
+			}
+		}
+	}
+	public void addReview(String itemName,double rating,String review)
+	{
+		for(int i=0;i<jsonItemList.size();i++)
+		{
+			if(jsonItemList.get(i).getItemName().equalsIgnoreCase(itemName))
+			{
+				String[] reviews=new String[jsonItemList.get(i).getReviews()[i].length()];
+				reviews[i]=jsonItemList.get(i).getReviews()[i];
+				for(int j=0;j<reviews.length;j++)
+				{
+					if(reviews[j]==null)
+					{
+						reviews[j]="Rating: "+rating+" "+review;
+						break;
+					}
+				}
+				jsonItemList.get(i).setReviews(reviews);
+				jsonItemList.get(i).setRating((jsonItemList.get(i).getRating()+rating)/2);
+			}
+		}
+	}
 }
