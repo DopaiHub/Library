@@ -47,18 +47,17 @@ public class UiDriver {
         		System.out.println("Welcome to Account Creation!");
     
         		System.out.println("Enter your First Name: ");
-        		scan.next();
-        		String first  = scan.nextLine();
+        		String first  = scan.next();
         		System.out.println("Enter your Last Name: ");
-        		scan.next();
-        		String last = scan.nextLine();
+        		String last = scan.next();
         		System.out.println("Enter your Address: ");
-        		scan.next();
         		String address = scan.nextLine();
+        		scan.nextLine();
         		System.out.println("Enter your Phone Number: ");
         		int phoneNumber = scan.nextInt();
         		System.out.println("Enter your Email: ");
         		email = scan.next();
+        		//scan.next();
         		System.out.println("Enter your Age: ");
         		int age = scan.nextInt();
         		System.out.println("Enter your Password: ");
@@ -80,7 +79,7 @@ public class UiDriver {
         		else if(userTypeChoice == 3) {
         			userType = "kid";
         		}
-        		else if(userTypeChoice == 1) {
+        		else if(userTypeChoice == 4) {
         			userType = "teacher";
         		}
         		
