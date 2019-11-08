@@ -178,7 +178,7 @@ public class UiDriver {
 	        		String[] userWaitList = new String[10];
 	        		userItemList = shell.getUserItems();
 	        		System.out.println("Items you have checked out: ");
-	        		for(int i = 0; i < 9; i++) {
+	        		for(int i = 0; i < 10; i++) {
 	        			if(userItemList[i] != null) {
 	        			System.out.println(userItemList[i]);
 	        			}
@@ -186,7 +186,7 @@ public class UiDriver {
 	        		
 	        		userWaitList = shell.searchWaitListForUser(you.getEmail());
 	        		System.out.println("Items you are waiting on: ");
-	        		for(int i = 0; i < 9; i++) {
+	        		for(int i = 0; i < 10; i++) {
 	        			if(userWaitList[i] != null) {
 	        			System.out.println(userWaitList[i]);
 	        			}
