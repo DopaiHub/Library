@@ -27,15 +27,31 @@ public class SystemShell {
 		return shell;
 	}
 	
-	public void searchItem(String str)
+	public ArrayList<Item> searchItem(String value)
 	{
+		ArrayList<Item> itemList=new ArrayList<Item>();
 		for(int i=0;i<jsonItemList.size();i++)
 		{
-			if (jsonItemList.get(i).getItemName().equalsIgnoreCase(str))
+			if (jsonItemList.get(i).getItemName().equalsIgnoreCase(value))
 			{
-				System.out.println(jsonItemList.get(i).toString());
+				itemList.add(jsonItemList.get(i));
 			}
+			else if(jsonItemList.get(i).getCreator().equalsIgnoreCase(value))
+			{
+				itemList.add(jsonItemList.get(i));
+			}
+			else if(jsonItemList.get(i).getGenre().equalsIgnoreCase(value))
+			{
+				itemList.add(jsonItemList.get(i));
+			}
+			else if(jsonItemList.get(i).getType().equalsIgnoreCase(value))
+			{
+				itemList.add(jsonItemList.get(i));
+			}
+			else
+				System.out.println("Invalid search");
 		}
+		return itemList;
 	}
 	
 	public User loginUser(String uEmail, String uPass)
