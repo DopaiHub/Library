@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UiDriver {
@@ -125,6 +126,15 @@ public class UiDriver {
 	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n");
 	        	while(endSearch == false) {
+	        		ArrayList<Item> itemList=new ArrayList<Item>();
+	        		System.out.println("Enter a keyword to search: ");
+	        		String keyword = scan.next();
+	        		itemList = shell.searchItem(keyword);
+	        		for(int i = 0; i < itemList.size(); i++) {
+	        			if(itemList.get(i) != null) {
+	        				System.out.println(itemList.get(i).getItemName());
+	        			}
+	        		}
 	        		
 	        		endSearch = true;
 	        	}
@@ -146,10 +156,20 @@ public class UiDriver {
 	        	while(endList == false) {
 	        		String[] userItemList = new String[10];
 	        		String[] userWaitList = new String[10];
-	        		userWaitList = shell.searchWaitListForUser(you.getEmail());
-	        		//userItemList =
+	        		userItemList = shell.getUserItems();
+	        		System.out.println("Items you have checked out: ");
 	        		for(int i = 0; i < 9; i++) {
+	        			if(userItemList[i] != null) {
+	        			System.out.println(userItemList[i]);
+	        			}
+	        		}
+	        		
+	        		userWaitList = shell.searchWaitListForUser(you.getEmail());
+	        		System.out.println("Items you are waiting on: ");
+	        		for(int i = 0; i < 9; i++) {
+	        			if(userWaitList[i] != null) {
 	        			System.out.println(userWaitList[i]);
+	        			}
 	        		}
 	        		
 	        		endList = true;
