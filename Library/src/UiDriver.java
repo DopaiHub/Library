@@ -130,6 +130,12 @@ public class UiDriver {
 	        		System.out.println("Enter a keyword to search: ");
 	        		String keyword = scan.next();
 	        		itemList = shell.searchItem(keyword);
+	        		if(itemList.size() == 0) {
+	        			System.out.println("Keyword had no matches.");
+	        			endSearch = true;
+	        			break;
+	        		}
+	        		
 	        		for(int i = 0; i < itemList.size(); i++) {
 	        			if(itemList.get(i) != null) {
 	        				System.out.println(i + 1 + ". " + itemList.get(i).getItemName());
