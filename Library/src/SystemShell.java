@@ -186,9 +186,9 @@ public class SystemShell {
 		for(int i=0;i<jsonItemList.size();i++)
 		{
 			String[] waitL = jsonItemList.get(i).getWaitList();
-			for (int j = 0; i < waitL.length; i++)
+			for (int j = 0; i < waitL.length; j++)
 			{
-				if (waitL[i].equals(email))
+				if (waitL[j].equals(email))
 				{
 					userWaitList[counter] = jsonItemList.get(i).getItemName();
 					counter++;
