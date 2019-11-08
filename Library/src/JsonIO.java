@@ -45,16 +45,24 @@ public class JsonIO {
 						waitList[j]=(String)iterator.next();
 						j++;
 				}
+				String[] reviews=new String[10];
+				JSONArray reviewList=(JSONArray)itemJSONIO.get("reviews");
+				iterator=reviewList.iterator();
+				j=0;
+				while(iterator.hasNext()) {
+						reviews[j]=(String)iterator.next();
+						j++;
+				}
 				if(type.equalsIgnoreCase("book"))
-					items.add(new Book(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type,id,waitList));
+					items.add(new Book(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type,id,waitList,reviews));
 				else if (type.equalsIgnoreCase("ebook"))
-					items.add(new Ebook(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type,id,waitList));
+					items.add(new Ebook(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type,id,waitList,reviews));
 				else if (type.equalsIgnoreCase("audiobook"))
-					items.add(new Audiobook(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type,id,waitList));
+					items.add(new Audiobook(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type,id,waitList,reviews));
 				else if (type.equalsIgnoreCase("dvd"))
-					items.add(new DVD(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type,id,waitList));
+					items.add(new DVD(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type,id,waitList,reviews));
 				else if (type.equalsIgnoreCase("magazine"))
-					items.add(new Magazine(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type,id,waitList));
+					items.add(new Magazine(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type,id,waitList,reviews));
 			}
 			
 			return items;
@@ -84,12 +92,12 @@ public class JsonIO {
 				String firstName = (String)userJSONIO.get("firstName");
 				String lastName = (String)userJSONIO.get("lastName");
 				String address = (String)userJSONIO.get("address");
-				int phoneNumber = 1234567;
+				int phoneNumber = (int)(long)userJSONIO.get("phoneNumber");
 				String email = (String)userJSONIO.get("email");
-				int age= 30;
+				int age= (int)(long)userJSONIO.get("age");
 				String password = (String)userJSONIO.get("password");
-				int itemLimit = 5;
-				double balance = 5.00;
+				int itemLimit = (int)(long)userJSONIO.get("itemLimit");
+				double balance = (double)userJSONIO.get("balance");
 				String type=(String)userJSONIO.get("userType");
 				int[] itemL=new int[10];
 				JSONArray itemIDS=(JSONArray)userJSONIO.get("itemList");
@@ -164,6 +172,13 @@ public class JsonIO {
 				{
 					idList.add(waitList[j]);
 				}
+				String[] reviews=new String[10];
+				reviews=itemList.get(i).getReviews();
+				JSONArray reviewList=new JSONArray();
+				for(int j=0;j<reviews.length;j++)
+				{
+					reviewList.add(reviews[j]);
+				}
 				itemDetails= new JSONObject();
 				itemDetails.put("creator",creator);
 				itemDetails.put("itemName",itemName);
@@ -179,6 +194,7 @@ public class JsonIO {
 				itemDetails.put("type", type);
 				itemDetails.put("id", id);
 				itemDetails.put("waitList", idList);
+				itemDetails.put("reviews", reviewList);
 				jsonArray.add(itemDetails);
 			}
 			JSONObject mainItem=new JSONObject();
