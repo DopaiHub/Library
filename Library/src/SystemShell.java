@@ -129,10 +129,37 @@ public class SystemShell {
 		
 	}
 	
-	public void registerUser(String userType, String firstN, String lastN, String email, String password, int age, String addr, int phoneNum)
+	public void registerUser(String firstName,String lastName,String address,
+			int phoneNumber, String email, int age, String password,String type)
 	{
-		
-		//User newU = new User(firstN, lastN, addr, phoneNum, email, age, password, );
+		int itemLimit=10;
+		double balance=0;
+		int[] itemL=new int[10];
+		if(type.equalsIgnoreCase("adult"))
+		{
+			
+			jsonUserList.add(new Adult(firstName, lastName, address,
+				phoneNumber, email, age, password,
+				itemLimit, balance,type,itemL));
+		}
+		else if(type.equalsIgnoreCase("admin"))
+		{
+			jsonUserList.add(new Admin(firstName, lastName, address,
+					phoneNumber, email, age, password,
+					itemLimit, balance,type, itemL));
+		}
+		else if(type.equalsIgnoreCase("teacher"))
+		{
+			jsonUserList.add(new Teacher(firstName, lastName, address,
+					phoneNumber, email, age, password,
+					itemLimit, balance,type, itemL));
+		}
+		else if(type.equalsIgnoreCase("kid"))
+		{
+			jsonUserList.add(new Kid(firstName, lastName, address,
+					phoneNumber, email, age, password,
+					itemLimit, balance,type, itemL));
+		}
 	}
 	
 	public void searchItemType(String iType)
