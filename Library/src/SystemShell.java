@@ -84,11 +84,6 @@ public class SystemShell {
 		person = null;
 	}
 	
-	private void returnItem(Item item)
-	{
-		
-	}
-	
 	public void checkoutItem(int id)
 	{
 		if(person.getItemList().length>=person.getItemLimit())
@@ -124,26 +119,6 @@ public class SystemShell {
 				}
 			}
 		}
-	}
-	
-	public void searchUser(User user)
-	{
-		
-	}
-	
-	private void editUser(User user)
-	{
-		
-	}
-	
-	public void searchItem(Item item)
-	{
-		
-	}
-	
-	private void editItem(Item item)
-	{
-		
 	}
 	
 	public void registerUser(String firstName,String lastName,String address,
