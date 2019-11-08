@@ -16,9 +16,8 @@ public class SystemShell {
 		uTeacher = null;
 		uAdult = null;
 		uKid = null;
-		JsonIO json = new JsonIO();
-		jsonUserList = json.loadUsers();
-		jsonItemList = json.loadItems();
+		jsonUserList = JsonIO.loadUsers();
+		jsonItemList = JsonIO.loadItems();
 	}
 	
 	public static SystemShell launchSystem()
@@ -64,14 +63,13 @@ public class SystemShell {
 	
 	public void logoutUser()
 	{
+		JsonIO.writeItem(jsonItemList);
+		JsonIO.writeUser(jsonUserList);
 		person = null;
 	}
 	
 	private void returnItem(Item item)
 	{
-		
-		
-		
 		
 	}
 	
