@@ -165,10 +165,25 @@ public class SystemShell {
 		}
 	}
 	
-	public void searchItemType(String iType)
+	public String[] searchWaitListForUser(String email)
 	{
-		
+		String[] userWaitList = new String[10];
+		int counter = 0;
+		for(int i=0;i<jsonItemList.size();i++)
+		{
+			String[] waitL = jsonItemList.get(i).getWaitList();
+			for (int j = 0; i < waitL.length; i++)
+			{
+				if (waitL[i].equals(email))
+				{
+					userWaitList[counter] = jsonItemList.get(i).getItemName();
+					counter++;
+				}
+			}
+		}
+		return userWaitList;
 	}
+	
 	public void payFines(double amount)
 	{
 		person.setBalance(person.getBalance()-amount);
