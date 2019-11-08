@@ -54,12 +54,13 @@ public class UiDriver {
 			System.out.println("1. View Account Information");
 			System.out.println("2. Search for an Item");
 			System.out.println("3. Return an Item");
-			System.out.println("4. Exit Library System");
+			System.out.println("4. List Your Items");
+			System.out.println("5. Exit Library System");
 			
 			
 			int choice = scan.nextInt();	
 			switch (choice) { 
-	        case 1: 
+	        case 1:
 	        	System.out.println("\n" + "\n");
 	        	System.out.println("------------------------------");
 	        	System.out.println("Viewing Account Information");
@@ -71,16 +72,20 @@ public class UiDriver {
 	        	System.out.println("\n" + "Age: " + you.getAge());
 	        	System.out.println("\n" + "Balance: " + you.getBalance());
 	        	System.out.println("\n" + "Account Type: " + you.getUserType());
-	        	
 	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n");
 	            break; 
-	        case 2: 
+	        case 2:
+	        	boolean endSearch = false;
 	        	System.out.println("\n" + "\n");
 	        	System.out.println("------------------------------");
 	        	System.out.println("Searching for an Item");
 	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n");
+	        	while(endSearch == false) {
+	        		
+	        		endSearch = true;
+	        	}
 	            break; 
 	        case 3: 
 	        	System.out.println("\n" + "\n");
@@ -88,8 +93,27 @@ public class UiDriver {
 	        	System.out.println("Returning an Item");
 	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n");
-	            break; 
+	            break;
 	        case 4: 
+	        	boolean endList = false;
+	        	System.out.println("\n" + "\n");
+	        	System.out.println("------------------------------");
+	        	System.out.println("List Your Items");
+	        	System.out.println("------------------------------");
+	        	System.out.println("\n" + "\n");
+	        	while(endList == false) {
+	        		String[] userItemList = new String[10];
+	        		String[] userWaitList = new String[10];
+	        		userWaitList = shell.searchWaitListForUser(you.getEmail());
+	        		//userItemList =
+	        		for(int i = 0; i < 9; i++) {
+	        			System.out.println(userWaitList[i]);
+	        		}
+	        		
+	        		endList = true;
+	        	}
+	            break;
+	        case 5: 
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
 	        	System.out.println("Shutting Down. . .");
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
