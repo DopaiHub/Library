@@ -51,8 +51,8 @@ public class UiDriver {
         		System.out.println("Enter your Last Name: ");
         		String last = scan.next();
         		System.out.println("Enter your Address: ");
-        		String address = scan.nextLine();
         		scan.nextLine();
+        		String address = scan.nextLine();
         		System.out.println("Address: " + address);
         		System.out.println("Enter your Phone Number: ");
         		int phoneNumber = scan.nextInt();
