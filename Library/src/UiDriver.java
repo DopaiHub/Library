@@ -42,7 +42,12 @@ public class UiDriver {
         		}
             	break;
         	case 2:
-        		System.out.println("\n" + "Account creation is not set up yet." + "\n");
+        		System.out.println("Welcome to Account Creation!");
+        		System.out.println("Enter your First Name: ");
+        		String first  = scan.next();
+        		System.out.println("Enter your Last Name: ");
+        		String last = scan.next();
+        		System.out.println("Enter your");
             	break;
 			}
 		}
