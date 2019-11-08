@@ -236,16 +236,7 @@ public class SystemShell {
 			}
 		}
 	}
-	private void addRating(String itemName,double rating)
-	{
-		for(int i=0;i<jsonItemList.size();i++)
-		{
-			if(jsonItemList.get(i).getItemName().equalsIgnoreCase(itemName))
-			{
-				jsonItemList.get(i).setRating((jsonItemList.get(i).getRating()+rating)/2);
-			}
-		}
-	}
+	
 	public void showReviews(String itemName)
 	{
 		for(int i=0;i<jsonItemList.size();i++)
@@ -259,6 +250,7 @@ public class SystemShell {
 			}
 		}
 	}
+	
 	public void addReview(String itemName,double rating,String review)
 	{
 		for(int i=0;i<jsonItemList.size();i++)
