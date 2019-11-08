@@ -186,7 +186,7 @@ public class SystemShell {
 		for(int i=0;i<jsonItemList.size();i++)
 		{
 			String[] waitL = jsonItemList.get(i).getWaitList();
-			for (int j = 0; i < waitL.length; j++)
+			for (int j = 0; j < waitL.length; j++)
 			{
 				if (waitL[j].equals(email))
 				{
@@ -203,17 +203,20 @@ public class SystemShell {
 		person.setBalance(person.getBalance()-amount);
 	}
 	
-	public String[] returnUserItems(int id)
+	public String[] returnUserItems()
 	{
 		String[] userItems = new String[10];
 		int counter = 0;
 		int[] itemL = person.getItemList();
 		for (int i = 0; i < jsonItemList.size(); i++)
 		{
-			if (jsonItemList.get(i).getId() == id)
+			for (int j = 0; j < itemL.length; j++)
 			{
-				userItems[counter] = jsonItemList.get(i).getItemName();
-				counter++;
+				if (itemL[j] == jsonItemList.get(i).getId())
+				{
+					userItems[counter] = jsonItemList.get(i).getItemName();
+					counter++;
+				}
 			}
 		}
 		return userItems;
