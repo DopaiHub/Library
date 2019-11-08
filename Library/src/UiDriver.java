@@ -132,7 +132,7 @@ public class UiDriver {
 	        		itemList = shell.searchItem(keyword);
 	        		for(int i = 0; i < itemList.size(); i++) {
 	        			if(itemList.get(i) != null) {
-	        				System.out.println(itemList.get(i).getItemName());
+	        				System.out.println(i + 1 + ". " + itemList.get(i).getItemName());
 	        			}
 	        		}
 	        		
