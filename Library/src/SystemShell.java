@@ -84,7 +84,7 @@ public class SystemShell {
 	
 	public void checkoutItem(int id)
 	{
-		if(person.getItemList().length>=person.getItemLimit())
+		if(person.getItemList().length>person.getItemLimit())
 			System.out.println("Item list is full");
 		else if(person.getBalance()>0)
 		{
@@ -115,6 +115,18 @@ public class SystemShell {
 					System.out.println("You have checked out "+ jsonItemList.get(id-1).getItemName());
 					break;
 				}
+			}
+		}
+	}
+	public void returnItem(int id)
+	{
+		for(int i=0;i<person.itemList.length;i++)
+		{
+			if(person.itemList[i]==id)
+			{
+				person.itemList[i]=0;
+				jsonItemList.get(id-1).setNumCopies(jsonItemList.get(id-1).getNumCopies()+1);
+				System.out.println("You have returned "+jsonItemList.get(id-1).getItemName());
 			}
 		}
 	}

@@ -152,11 +152,17 @@ public class UiDriver {
 	        	}
 	            break; 
 	        case 3: 
+	        	String[] stringList=shell.getUserItems();
 	        	System.out.println("\n" + "\n");
 	        	System.out.println("------------------------------");
 	        	System.out.println("Returning an Item");
 	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n");
+	        	for(int i=0;i<you.getItemList().length;i++)
+	        	{
+	        		if(you.getItemList()[i]>0)
+	        		System.out.println((you.getItemList()[i])+" "+stringList[i]);
+	        	}
 	            break;
 	        case 4: 
 	        	boolean endList = false;
