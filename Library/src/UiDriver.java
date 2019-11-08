@@ -89,7 +89,7 @@ public class UiDriver {
             	break;
 			}
 		}
-		
+		shell.notifyUser(you.getEmail());
 		
 		boolean run = true;
 		while(run == true) {
@@ -199,6 +199,8 @@ public class UiDriver {
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
 	        	System.out.println("Shutting Down. . .");
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
+	        	//ONLY UNCOMMENT BOTTOM LINE WHEN WE ARE 100% SURE THAT THE PROGRAM FUNCITONS PROPERLY
+	        	//shell.logoutUser();
 	        	run = false;
 	            break; 
 	        } 

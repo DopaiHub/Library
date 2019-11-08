@@ -200,7 +200,7 @@ public class JsonIO {
 			JSONObject mainItem=new JSONObject();
 			mainItem.put("item",jsonArray);
 			FileWriter file = new FileWriter(itemFile);
-            file.write(mainItem.toString());
+            file.write(mainItem.toJSONString());
             file.flush();
             file.close();
          
@@ -213,7 +213,12 @@ public class JsonIO {
 	{
 		try {
 			
-
+//			FileReader reader = new FileReader(itemFile);
+//			JSONParser parser = new JSONParser();
+//			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
+//			JSONArray bookJSON = (JSONArray)jsonData.get("item");
+			
+			JSONParser parser = new JSONParser();
 			JSONArray jsonArray=new JSONArray();
 			JSONObject userDetails= new JSONObject();
 			JSONObject user=new JSONObject();
@@ -240,12 +245,13 @@ public class JsonIO {
 				userDetails.put("lastName",lastName);
 				userDetails.put("address",address);
 				userDetails.put("phoneNumber",phoneNumber);
-				userDetails.put("email",email);
+				userDetails.put("email",email.toString());
 				userDetails.put("age",age);
-				userDetails.put("password",password);
+				userDetails.put("password",password.toString());
 				userDetails.put("itemLimit",itemLimit);
 				userDetails.put("balance",balance);
 				userDetails.put("userType",type);
+
 				userDetails.put("itemList",idList);
 				jsonArray.add(userDetails);
 			}
@@ -253,7 +259,7 @@ public class JsonIO {
 			JSONObject mainUser=new JSONObject();
 			mainUser.put("user",jsonArray);
 			FileWriter file = new FileWriter(userFile);
-            file.write(mainUser.toString());
+            file.write(mainUser.toJSONString());
             file.flush();
             file.close();
          
