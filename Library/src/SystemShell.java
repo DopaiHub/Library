@@ -48,8 +48,6 @@ public class SystemShell {
 			{
 				itemList.add(jsonItemList.get(i));
 			}
-			else
-				System.out.println("Invalid search");
 		}
 		return itemList;
 	}
