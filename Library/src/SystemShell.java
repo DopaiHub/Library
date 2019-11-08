@@ -218,4 +218,28 @@ public class SystemShell {
 		}
 		return userItems;
 	}
+	public void addStock(String itemName,int copies)
+	{
+		for(int i=0;i<jsonItemList.size();i++)
+		{
+			if(jsonItemList.get(i).getItemName().equalsIgnoreCase(itemName))
+			{
+				jsonItemList.get(i).setNumCopies(jsonItemList.get(i).getNumCopies()+copies);
+				System.out.println("Added "+copies+" to "+jsonItemList.get(i).getItemName());
+			}
+		}
+	}
+	public void notifyUser(String uEmail)
+	{
+		for(int i=0;i<jsonItemList.size();i++)
+		{
+			for(int j=0;j<jsonItemList.get(i).getWaitList().length;j++)
+			{
+				if(jsonItemList.get(i).getWaitList()[i].equalsIgnoreCase(uEmail))
+				{
+					System.out.println("Your item "+jsonItemList.get(i).getItemName()+" is now availiable to be checked out");
+				}
+			}
+		}
+	}
 }
