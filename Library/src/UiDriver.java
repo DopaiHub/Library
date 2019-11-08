@@ -53,11 +53,11 @@ public class UiDriver {
         		System.out.println("Enter your Address: ");
         		String address = scan.nextLine();
         		scan.nextLine();
+        		System.out.println("Address: " + address);
         		System.out.println("Enter your Phone Number: ");
         		int phoneNumber = scan.nextInt();
         		System.out.println("Enter your Email: ");
         		email = scan.next();
-        		//scan.next();
         		System.out.println("Enter your Age: ");
         		int age = scan.nextInt();
         		System.out.println("Enter your Password: ");
