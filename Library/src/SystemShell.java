@@ -203,7 +203,7 @@ public class SystemShell {
 		person.setBalance(person.getBalance()-amount);
 	}
 	
-	public String[] returnUserItems()
+	public String[] getUserItems()
 	{
 		String[] userItems = new String[10];
 		int counter = 0;
