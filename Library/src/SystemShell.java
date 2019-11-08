@@ -92,6 +92,7 @@ public class SystemShell {
 				{
 					wait=jsonItemList.get(id-1).getWaitList();
 					jsonItemList.get(id-1).setWaitList(wait);
+					System.out.println("You have been added to the waitlist for "+jsonItemList.get(id-1));
 					break;
 				}
 			}
@@ -103,6 +104,7 @@ public class SystemShell {
 				if(person.itemList[i]==0)
 				{
 					person.itemList[i]=id;
+					jsonItemList.get(id-1).setNumCopies(jsonItemList.get(id-1).getNumCopies()-1);
 					break;
 				}
 			}
