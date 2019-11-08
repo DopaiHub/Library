@@ -236,12 +236,28 @@ public class SystemShell {
 	{
 		for(int i=0;i<jsonItemList.size();i++)
 		{
+			if(jsonItemList.get(i).getNumCopies()>0)
+			{
 			for(int j=0;j<jsonItemList.get(i).getWaitList().length;j++)
 			{
 				if(jsonItemList.get(i).getWaitList()[i].equalsIgnoreCase(uEmail))
 				{
 					System.out.println("Your item "+jsonItemList.get(i).getItemName()+" is now availiable to be checked out");
 				}
+			}
+			}
+		}
+	}
+	public void dueDate()
+	{
+		for(int i=0;i<person.getItemList().length;i++)
+		{
+			if(person.getItemList()[i]>0)
+			{
+				String itemName=jsonItemList.get(person.getItemList()[i]-1).getItemName();
+				int maxTime=jsonItemList.get(person.getItemList()[i]-1).getMaxTime();
+				int checkoutTime=jsonItemList.get(person.getItemList()[i]-1).getCheckoutTime();
+				System.out.println(itemName+" is due in "+(maxTime-checkoutTime)+" days");
 			}
 		}
 	}
