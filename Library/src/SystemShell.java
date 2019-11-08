@@ -202,4 +202,20 @@ public class SystemShell {
 	{
 		person.setBalance(person.getBalance()-amount);
 	}
+	
+	public String[] returnUserItems(int id)
+	{
+		String[] userItems = new String[10];
+		int counter = 0;
+		int[] itemL = person.getItemList();
+		for (int i = 0; i < jsonItemList.size(); i++)
+		{
+			if (jsonItemList.get(i).getId() == id)
+			{
+				userItems[counter] = jsonItemList.get(i).getItemName();
+				counter++;
+			}
+		}
+		return userItems;
+	}
 }
