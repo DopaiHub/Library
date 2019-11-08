@@ -171,8 +171,7 @@ public class UiDriver {
 	        	System.out.println("Returning an Item");
 	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n");
-	        	for(int i=0;i<you.getItemList().length;i++)
-	        	{
+	        	for(int i=0;i<you.getItemList().length;i++) {
 	        		if(you.getItemList()[i]>0)
 	        		System.out.println((you.getItemList()[i])+" "+stringList[i]);
 	        	}
@@ -194,6 +193,7 @@ public class UiDriver {
 	        			System.out.println(userItemList[i]);
 	        			}
 	        		}
+	        		
 	        		
 	        		userWaitList = shell.searchWaitListForUser(you.getEmail());
 	        		System.out.println("Items you are waiting on: ");
