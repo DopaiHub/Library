@@ -84,7 +84,7 @@ public class SystemShell {
 	
 	public void checkoutItem(int id)
 	{
-		if(person.getItemList().length>=person.getItemLimit())
+		if(person.getItemList().length>person.getItemLimit())
 			System.out.println("Item list is full");
 		else if(person.getBalance()>0)
 		{
