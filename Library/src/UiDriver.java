@@ -130,7 +130,6 @@ public class UiDriver {
 	        		System.out.println("Enter a keyword to search: ");
 	        		String keyword = scan.next();
 	        		itemList = shell.searchItem(keyword);
-	        		System.out.println("Item list size: " + itemList.size());
 	        		for(int i = 0; i < itemList.size(); i++) {
 	        			if(itemList.get(i) != null) {
 	        				System.out.println(i + 1 + ". " + itemList.get(i).getItemName());
