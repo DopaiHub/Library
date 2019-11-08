@@ -145,9 +145,17 @@ public class UiDriver {
 	        		}
 	        		
 	        		System.out.println("Options for " + itemList.get(searchChoice - 1).getItemName());
-	        		System.out.print("1. Checkout Item");
+	        		System.out.println("1. Checkout Item");
+	        		System.out.println("2. See Item Information");
+	        		System.out.println("3. Return to Menu");
 	        		
-	        		
+	        		int itemChoice = scan.nextInt();
+	        		if(itemChoice == 1) {
+	        			shell.checkoutItem(itemList.get(searchChoice - 1).getId());
+	        		}
+	        		else if(itemChoice == 2) {
+	        			System.out.println(itemList.get(searchChoice).toString());
+	        		}
 	        		endSearch = true;
 	        	}
 	            break; 
