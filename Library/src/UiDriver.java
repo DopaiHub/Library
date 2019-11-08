@@ -26,14 +26,16 @@ public class UiDriver {
 		while(endLogin == false) {
 			System.out.println("1. Login");
 			System.out.println("2. Create Account");
+			String email = "";
+			String password = "";
 		
 			int loginChoice = scan.nextInt();
 			switch (loginChoice) {
 			case 1:
         		System.out.println("\n" + "Please enter your email: ");
-        		String email = scan.next();
+        		email = scan.next();
         		System.out.println("\n" + "Please enter your password: ");
-        		String password = scan.next();
+        		password = scan.next();
         		you = login(email, password);
         		
         		if(you != null) {
@@ -43,11 +45,47 @@ public class UiDriver {
             	break;
         	case 2:
         		System.out.println("Welcome to Account Creation!");
+    
         		System.out.println("Enter your First Name: ");
-        		String first  = scan.next();
+        		scan.next();
+        		String first  = scan.nextLine();
         		System.out.println("Enter your Last Name: ");
-        		String last = scan.next();
-        		System.out.println("Enter your");
+        		scan.next();
+        		String last = scan.nextLine();
+        		System.out.println("Enter your Address: ");
+        		scan.next();
+        		String address = scan.nextLine();
+        		System.out.println("Enter your Phone Number: ");
+        		int phoneNumber = scan.nextInt();
+        		System.out.println("Enter your Email: ");
+        		email = scan.next();
+        		System.out.println("Enter your Age: ");
+        		int age = scan.nextInt();
+        		System.out.println("Enter your Password: ");
+        		password = scan.next();
+        		System.out.println("What is your account type?");
+        		System.out.println("1. Adult");
+        		System.out.println("2. Admin");
+        		System.out.println("3. Kid");
+        		System.out.println("4. Teacher");
+        		int userTypeChoice = 0;
+        		String userType = "";
+        		userTypeChoice = scan.nextInt();
+        		if(userTypeChoice == 1) {
+        			userType = "adult";
+        		}
+        		else if(userTypeChoice == 2) {
+        			userType = "admin";
+        		}
+        		else if(userTypeChoice == 3) {
+        			userType = "kid";
+        		}
+        		else if(userTypeChoice == 1) {
+        			userType = "teacher";
+        		}
+        		
+        		shell.registerUser(first, last, address, phoneNumber, email, age, password, userType);
+        		
             	break;
 			}
 		}
