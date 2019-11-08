@@ -128,19 +128,24 @@ public class UiDriver {
 	        	while(endSearch == false) {
 	        		ArrayList<Item> itemList=new ArrayList<Item>();
 	        		System.out.println("Enter a keyword to search: ");
-	        		//System.out.println(itemList.size());
 	        		String keyword = scan.next();
 	        		itemList = shell.searchItem(keyword);
+	        		System.out.println("Item list size: " + itemList.size());
 	        		for(int i = 0; i < itemList.size(); i++) {
 	        			if(itemList.get(i) != null) {
 	        				System.out.println(i + 1 + ". " + itemList.get(i).getItemName());
-	        				if(i == itemList.size() - 1) {
-	        					System.out.println(i + 2 + ". Return to Menu");
-	        				}
 	        			}
-	        			
+	        			if(i == itemList.size() - 1) {
+        					System.out.println(i + 2 + ". Return to Menu");
+        				}
+	        		}
+	        		int searchChoice = scan.nextInt();
+	        		if(searchChoice == itemList.size()) {
+	        			endSearch = true;
 	        		}
 	        		
+	        		System.out.println("Options for " + itemList.get(searchChoice - 1).getItemName());
+	        		System.out.print("1. Checkout Item");
 	        		
 	        		
 	        		endSearch = true;
