@@ -5,14 +5,6 @@ public class UiDriver {
 	public static User login(String email, String password) {
 		SystemShell shell = SystemShell.launchSystem();
 		User user = shell.loginUser(email, password);
-		if(user != null) {
-			System.out.println("Welcome " + user.getFirstName());
-		}
-		
-		else {
-			System.out.println("Login Failed.");
-		}
-		
 		return user;
 	}
 
@@ -24,6 +16,8 @@ public class UiDriver {
 		
 		
 		SystemShell shell = SystemShell.launchSystem();
+		User you = new Adult();
+		
 		
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Welcome to the Library System!");
@@ -40,11 +34,15 @@ public class UiDriver {
         		String email = scan.next();
         		System.out.println("\n" + "Please enter your password: ");
         		String password = scan.next();
-        		login(email, password);
+        		you = login(email, password);
+        		
+        		if(you != null) {
+        			System.out.println("Welcome " + you.getFirstName());
+        			endLogin = true;
+        		}
             	break;
         	case 2:
         		System.out.println("\n" + "Account creation is not set up yet." + "\n");
-        		endLogin = true;
             	break;
 			}
 		}
@@ -65,6 +63,15 @@ public class UiDriver {
 	        	System.out.println("\n" + "\n");
 	        	System.out.println("------------------------------");
 	        	System.out.println("Viewing Account Information");
+	        	System.out.println("\n" + "First Name: " + you.getFirstName());
+	        	System.out.println("\n" + "Last Name: " + you.getLastName());
+	        	System.out.println("\n" + "Address: " + you.getAddress());
+	        	System.out.println("\n" + "Phone Number: " + you.getPhoneNumber());
+	        	System.out.println("\n" + "Email: " + you.getEmail());
+	        	System.out.println("\n" + "Age: " + you.getAge());
+	        	System.out.println("\n" + "Balance: " + you.getBalance());
+	        	System.out.println("\n" + "Account Type: " + you.getUserType());
+	        	
 	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n");
 	            break; 
