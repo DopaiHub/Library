@@ -1,8 +1,17 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author 
+ *
+ */
 public class UiDriver {
-	
+	/**
+	 * This method starts the System shell interface and returns the user to be logged in
+	 * @param email The user's email, password The user's password
+	 * @return The object of the user who has logged in
+	 */
 	public static User login(String email, String password) {
 		SystemShell shell = SystemShell.launchSystem();
 		User user = shell.loginUser(email, password);
@@ -11,19 +20,17 @@ public class UiDriver {
 
 	public static void main(String[] args) {
 		
-		//TODO Add login function
-		//TODO Add functionality to Admin users
-		//TODO Connect case statements with SystemShell API
-		
-		
+		//Creates a system shell object and user to be logged in
 		SystemShell shell = SystemShell.launchSystem();
 		User you = new Adult();
 		
-		
+		//Scanner to take in input
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Welcome to the Library System!");
 		System.out.println("------------------------------" + "\n");
 		boolean endLogin = false;
+		
+		//While loop that contains login/account creation
 		while(endLogin == false) {
 			System.out.println("1. Login");
 			System.out.println("2. Create Account");
@@ -31,7 +38,9 @@ public class UiDriver {
 			String password = "";
 		
 			int loginChoice = scan.nextInt();
+			//Input "loginChoice" decides the case log in or create account
 			switch (loginChoice) {
+			//Log in case
 			case 1:
         		System.out.println("\n" + "Please enter your email: ");
         		email = scan.next();
@@ -44,6 +53,7 @@ public class UiDriver {
         			endLogin = true;
         		}
             	break;
+            	//Create account case
         	case 2:
         		System.out.println("Welcome to Account Creation!");
     
@@ -83,13 +93,16 @@ public class UiDriver {
         			userType = "teacher";
         		}
         		
+        		//API to create a new user
         		shell.registerUser(first, last, address, phoneNumber, email, age, password, userType);
         		
             	break;
 			}
 		}
+		//Check if any of your waiting list items are now available
 		shell.notifyUser(you.getEmail());
 		
+		//While loop that contains the Library System program/operations
 		boolean run = true;
 		while(run == true) {
 			System.out.println("\n" + "Please choose an operation." + "\n");
@@ -100,9 +113,10 @@ public class UiDriver {
 			System.out.println("5. Manage Balance");
 			System.out.println("6. Exit Library System" + "\n");
 			
-			//scan.nextLine();
+			
 			int choice = scan.nextInt();	
 			switch (choice) { 
+			//Case to view account information
 	        case 1:
 	        	System.out.println("\n" + "\n");
 	        	System.out.println("------------------------------");
@@ -113,11 +127,12 @@ public class UiDriver {
 	        	System.out.println("\n" + "Phone Number: " + you.getPhoneNumber());
 	        	System.out.println("\n" + "Email: " + you.getEmail());
 	        	System.out.println("\n" + "Age: " + you.getAge());
-	        	System.out.println("\n" + "Balance: " + you.getBalance());
+	        	System.out.println("\n" + "Amount Owed: " + you.getBalance());
 	        	System.out.println("\n" + "Account Type: " + you.getUserType());
 	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n");
 	            break; 
+	            //Case to search for an item
 	        case 2:
 	        	boolean endSearch = false;
 	        	System.out.println("\n" + "\n");
@@ -125,10 +140,12 @@ public class UiDriver {
 	        	System.out.println("Searching for an Item");
 	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n");
+	        	//While loop that facilitates item search functionality
 	        	while(endSearch == false) {
 	        		ArrayList<Item> itemList=new ArrayList<Item>();
 	        		System.out.println("Enter a keyword to search: ");
 	        		String keyword = scan.next();
+	        		//API to return items matching the search term
 	        		itemList = shell.searchItem(keyword);
 	        		if(itemList.size() == 0) {
 	        			System.out.println("Keyword had no matches.");
@@ -149,6 +166,7 @@ public class UiDriver {
 	        			break;
 	        		}
 	        		
+	        		//Display options for a selected item
 	        		System.out.println("Options for " + itemList.get(searchChoice - 1).getItemName());
 	        		System.out.println("1. Checkout Item");
 	        		System.out.println("2. See Item Information");
@@ -157,16 +175,19 @@ public class UiDriver {
 	        		System.out.println("5. Return to Menu");
 	        		
 	        		int itemChoice = scan.nextInt();
+	        		//Checkout the item
 	        		if(itemChoice == 1) {
 	        			shell.checkoutItem(itemList.get(searchChoice - 1).getId());
 	        		}
+	        		//View item information
 	        		else if(itemChoice == 2) {
 	        			System.out.println(itemList.get(searchChoice - 1).toString());
 	        		}
+	        		//See item reviews
 	        		else if(itemChoice == 3) {
-	        			//Prints null for every possible review, should only print one if its not null
 	        			shell.showReviews(itemList.get(searchChoice - 1).getItemName());
 	        		}
+	        		//Create a new review
 	        		else if(itemChoice == 4) {
 	        			shell.showReviews(itemList.get(searchChoice - 1).getItemName());
 	        			System.out.println("How would you rate this item out of 5.0?");
@@ -174,12 +195,12 @@ public class UiDriver {
 	        			System.out.println("Write a Review for the item: ");
 	        			scan.nextLine();
 	        			String review = scan.nextLine();
-	        			//Null pointer in addReview
 	        			shell.addReview(itemList.get(searchChoice - 1).getItemName(), rating, review);
 	        		}
 	        		endSearch = true;
 	        	}
-	            break; 
+	            break;
+	            //Case to return an item
 	        case 3: 
 	        	String[] stringList = shell.getUserItems();
 	        	System.out.println("\n" + "\n");
@@ -188,6 +209,7 @@ public class UiDriver {
 	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n");
 	        	
+	        	//Print a list of the user's items
 	        	for(int i = 0; i < you.getItemList().length; i++) {
 	        		if(you.getItemList()[i] > 0)
 	        			System.out.println(i + 1 + ". " + stringList[i]);
@@ -197,6 +219,7 @@ public class UiDriver {
 	        		}
 	        	}
 	        	
+	        	
 	        	System.out.println("Please Choose an Item to Return.");
 	        	int returnChoice = scan.nextInt();
 	        	
@@ -204,11 +227,13 @@ public class UiDriver {
 	        		break;
 	        	}
 	        	else {
+	        		//Convert item name to item id
 	        		int itemId = shell.returnIDByName(stringList[returnChoice-1]);
+	        		//return item API
 	        		shell.returnItem(itemId);
 	        	}
-	        	
 	            break;
+	            //Case to list the user's items
 	        case 4: 
 	        	boolean endList = false;
 	        	System.out.println("\n" + "\n");
@@ -216,6 +241,8 @@ public class UiDriver {
 	        	System.out.println("List Your Items");
 	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n");
+	        	
+	        	//Print items that are checked out
 	        	while(endList == false) {
 	        		String[] userItemList = new String[10];
 	        		String[] userWaitList = new String[10];
@@ -227,7 +254,7 @@ public class UiDriver {
 	        			}
 	        		}
 	        		
-	        		
+	        		//Print items that the user is waiting on
 	        		userWaitList = shell.searchWaitListForUser(you.getEmail());
 	        		System.out.println("\n" + "Items you are waiting on: ");
 	        		for(int i = 0; i < 10; i++) {
@@ -235,10 +262,10 @@ public class UiDriver {
 	        			System.out.println(userWaitList[i]);
 	        			}
 	        		}
-	        		
 	        		endList = true;
 	        	}
 	            break;
+	            //Case to handle balance and fine functionality
 	        case 5: 
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
 	        	System.out.println("------------------------------");
@@ -253,14 +280,23 @@ public class UiDriver {
 	        	
 	        	int userChoice = scan.nextInt();
 	        	
+	        	//Pay a fine on the user's account
 	        	if(userChoice == 1) {
 	        		System.out.println("Current Debt: " + you.getBalance());
 	        		System.out.println("Enter the Amount to be Paid: ");
 	        		double amountPaid = scan.nextDouble();
 	        		shell.payFines(amountPaid);
 	        	}
-	        	
+	        	//Admin function to fine a user
+	        	else if(userChoice == 2) {
+	        		System.out.println("Enter the email of the user to be fined.");
+	        		String fineEmail = scan.next();
+	        		System.out.println("Enter the Fine Amount.");
+	        		double fineAmount = scan.nextDouble();
+	        		shell.addFine(fineAmount, fineEmail);
+	        	}
 	            break;
+	            //Case to shut down the program.
 	        case 6: 
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
 	        	System.out.println("Shutting Down. . .");
