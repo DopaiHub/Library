@@ -95,9 +95,17 @@ public class SystemShell {
 			for(int i=0;i<jsonItemList.get(id-1).getWaitList().length;i++)
 			{
 				String[] wait=new String[10];
-				if(jsonItemList.get(id-1).getWaitList()==null)
+				if(jsonItemList.get(id-1).getWaitList()[i]==null)
 				{
 					wait=jsonItemList.get(id-1).getWaitList();
+					for(int j=0;j<wait.length;j++)
+					{
+						if(wait[j]==null)
+						{
+							wait[j]=person.getEmail();
+							break;
+						}
+					}
 					jsonItemList.get(id-1).setWaitList(wait);
 					System.out.println("You have been added to the waitlist for "+jsonItemList.get(id-1).getItemName());
 					break;
