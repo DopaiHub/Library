@@ -168,6 +168,7 @@ public class UiDriver {
 	        			shell.showReviews(itemList.get(searchChoice - 1).getItemName());
 	        		}
 	        		else if(itemChoice == 4) {
+	        			shell.showReviews(itemList.get(searchChoice - 1).getItemName());
 	        			System.out.println("How would you rate this item out of 5.0?");
 	        			double rating = scan.nextDouble();
 	        			System.out.println("Write a Review for the item: ");
