@@ -144,8 +144,9 @@ public class UiDriver {
         				}
 	        		}
 	        		int searchChoice = scan.nextInt();
-	        		if(searchChoice == itemList.size()) {
-	        			endSearch = true;
+	        		if(searchChoice == itemList.size() + 1) {
+	        			System.out.println("Returning to menu");
+	        			break;
 	        		}
 	        		
 	        		System.out.println("Options for " + itemList.get(searchChoice - 1).getItemName());
@@ -203,7 +204,7 @@ public class UiDriver {
 	        		String[] userItemList = new String[10];
 	        		String[] userWaitList = new String[10];
 	        		userItemList = shell.getUserItems();
-	        		System.out.println("Items you have checked out: ");
+	        		System.out.println("\n" + "Items you have checked out: ");
 	        		for(int i = 0; i < 10; i++) {
 	        			if(userItemList[i] != null) {
 	        			System.out.println(userItemList[i]);
@@ -212,7 +213,7 @@ public class UiDriver {
 	        		
 	        		
 	        		userWaitList = shell.searchWaitListForUser(you.getEmail());
-	        		System.out.println("Items you are waiting on: ");
+	        		System.out.println("\n" + "Items you are waiting on: ");
 	        		for(int i = 0; i < 10; i++) {
 	        			if(userWaitList[i] != null) {
 	        			System.out.println(userWaitList[i]);
