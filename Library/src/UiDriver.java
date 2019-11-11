@@ -100,7 +100,7 @@ public class UiDriver {
 			System.out.println("5. Manage Balance");
 			System.out.println("6. Exit Library System" + "\n");
 			
-			scan.nextLine();
+			//scan.nextLine();
 			int choice = scan.nextInt();	
 			switch (choice) { 
 	        case 1:
@@ -171,7 +171,8 @@ public class UiDriver {
 	        			System.out.println("How would you rate this item out of 5.0?");
 	        			double rating = scan.nextDouble();
 	        			System.out.println("Write a Review for the item: ");
-	        			String review = scan.next();
+	        			scan.nextLine();
+	        			String review = scan.nextLine();
 	        			//Null pointer in addReview
 	        			shell.addReview(itemList.get(searchChoice - 1).getItemName(), rating, review);
 	        		}
@@ -202,8 +203,8 @@ public class UiDriver {
 	        		break;
 	        	}
 	        	else {
-	        		//int itemId = shell.returnIdByName(stringList[returnChoice]);
-	        		//shell.returnItem();
+	        		int itemId = shell.returnIDByName(stringList[returnChoice-1]);
+	        		shell.returnItem(itemId);
 	        	}
 	        	
 	            break;
