@@ -99,7 +99,7 @@ public class UiDriver {
 			System.out.println("4. List Your Items");
 			System.out.println("5. Exit Library System" + "\n");
 			
-			
+			scan.nextLine();
 			int choice = scan.nextInt();	
 			switch (choice) { 
 	        case 1:
