@@ -263,13 +263,15 @@ public class SystemShell {
 	{
 		for(int i=0;i<jsonItemList.size();i++)
 		{
-			if(jsonItemList.get(i).getItemName().equalsIgnoreCase(itemName))
+			if(jsonItemList.get(i)!=null&&jsonItemList.get(i).getItemName().equalsIgnoreCase(itemName))
 			{
 				for(int j=0;j<jsonItemList.get(i).getReviews().length;j++)
 				{
-					System.out.println(jsonItemList.get(i).getReviews()[i]);
+					if(jsonItemList.get(i).getReviews()[j]!=null)
+					System.out.println(jsonItemList.get(i).getReviews()[j]);
 				}
 			}
+			
 		}
 	}
 	
@@ -277,9 +279,10 @@ public class SystemShell {
 	{
 		for(int i=0;i<jsonItemList.size();i++)
 		{
-			if(jsonItemList.get(i).getItemName().equalsIgnoreCase(itemName))
+			if(jsonItemList.get(i)!=null&&jsonItemList.get(i).getItemName().equalsIgnoreCase(itemName))
 			{
 				String[] reviews=new String[jsonItemList.get(i).getReviews()[i].length()];
+				if(jsonItemList.get(i).getReviews()[i]!=null)
 				reviews[i]=jsonItemList.get(i).getReviews()[i];
 				for(int j=0;j<reviews.length;j++)
 				{

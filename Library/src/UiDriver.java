@@ -100,7 +100,7 @@ public class UiDriver {
 			System.out.println("5. Manage Balance");
 			System.out.println("6. Exit Library System" + "\n");
 			
-			
+			scan.nextLine();
 			int choice = scan.nextInt();	
 			switch (choice) { 
 	        case 1:
