@@ -30,7 +30,7 @@ public class Admin extends User {
 			if (u.getEmail() != null && u.getEmail().equals(email))
 			{
 				System.out.println(u.getBalance());
-				uList.get(i).setBalance(uList.get(i).getBalance() + fine);
+				u.setBalance(u.getBalance() + fine);
 				System.out.println(u.getBalance());
 				return uList;
 			}
