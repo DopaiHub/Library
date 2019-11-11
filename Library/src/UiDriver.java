@@ -202,7 +202,7 @@ public class UiDriver {
 	        		break;
 	        	}
 	        	else {
-	        		// Need to find an item given an item name and grab the object (or just the id is fine)
+	        		//int itemId = shell.returnIdByName(stringList[returnChoice]);
 	        		//shell.returnItem();
 	        	}
 	        	
@@ -239,7 +239,9 @@ public class UiDriver {
 	            break;
 	        case 5: 
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
+	        	System.out.println("------------------------------");
 	        	System.out.println("Manage Balance");
+	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
 	        	
 	            break;
