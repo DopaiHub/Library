@@ -2,12 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * 
-<<<<<<< HEAD
- * @author 
-=======
+ *
  * @author Uncrustables (Joshua, Adam, Steven)
->>>>>>> 6c8d7dd26ea3f5cf8053ad4b90077950561126d7
  *
  */
 public class UiDriver {
@@ -335,7 +331,7 @@ public class UiDriver {
 	        	System.out.println("Shutting Down. . .");
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
 	        	//ONLY UNCOMMENT BOTTOM LINE WHEN WE ARE 100% SURE THAT THE PROGRAM FUNCITONS PROPERLY
-	        	//shell.logoutUser();
+	        	shell.logoutUser();
 	        	run = false;
 	            break; 
 	        } 
