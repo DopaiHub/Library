@@ -174,6 +174,21 @@ public class UiDriver {
 	        	for(int i = 0; i < you.getItemList().length; i++) {
 	        		if(you.getItemList()[i] > 0)
 	        			System.out.println(i + 1 + ". " + stringList[i]);
+	        		if(stringList[i] == null) {
+	        			System.out.println(i + 1 + ". Return to Menu");
+	        			i = you.getItemList().length;
+	        		}
+	        	}
+	        	
+	        	System.out.println("Please Choose an Item to Return.");
+	        	int returnChoice = scan.nextInt();
+	        	
+	        	if(stringList[returnChoice] == null) {
+	        		break;
+	        	}
+	        	else {
+	        		// Need to find an item given an item name and grab the object (or just the id is fine)
+	        		//shell.returnItem();
 	        	}
 	        	
 	            break;
