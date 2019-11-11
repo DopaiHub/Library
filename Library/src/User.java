@@ -1,5 +1,5 @@
 /**
- * 
+ * User is an abstract class that is used as the blueprint for User subclasses and has getter and setter methods for all instance variables
  * @author Uncrustables (Joshua, Adam, Steven)
  *
  */

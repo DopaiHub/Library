@@ -1,5 +1,5 @@
 /**
- * 
+ * Adult is a User subclass that also has getter methods for the balance and item list
  * @author Uncrustables (Joshua, Adam, Steven)
  *
  */

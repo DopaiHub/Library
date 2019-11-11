@@ -1,5 +1,5 @@
 /**
- * 
+ * Kid is a User subclass that has getter methods for balance and item list
  * @author Uncrustables (Joshua, Adam, Steven)
  *
  */

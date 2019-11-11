@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 /**
- * 
+ * Admin is a User subclass that has getter methods for balance and item list, along with a method to fine users
  * @author Uncrustables (Joshua, Adam, Steven)
  *
  */
