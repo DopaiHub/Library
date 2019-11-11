@@ -8,11 +8,23 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import java.io.FileWriter;
 import java.io.IOException;
+/**
+ * JsonIO has methods to read and write to JSON files
+ * @author Uncrustables (Josh,Adam,Steven)
+ *
+ */
 public class JsonIO {
 	
+	/**
+	 * Constants for json files
+	 */
 	private static final String itemFile="Library/src/items.json";
 	private static final String userFile="Library/src/users.json";
 	
+	/**
+	 * loadItems method reads from a JSON file and returns an arraylist of those items
+	 * @return ArrayList<items>
+	 */
 	public static ArrayList<Item> loadItems() {
 		ArrayList<Item> items = new ArrayList<Item>();
 		
@@ -23,6 +35,7 @@ public class JsonIO {
 			JSONArray itemJSON = (JSONArray)jsonData.get("item");
 			
 			for(int i=0; i < itemJSON.size(); i++) {
+				//Gets values from each variable
 				JSONObject itemJSONIO = (JSONObject)itemJSON.get(i);
 				String creator = (String)itemJSONIO.get("creator");
 				String itemName = (String)itemJSONIO.get("itemName");
@@ -53,6 +66,7 @@ public class JsonIO {
 						reviews[j]=(String)iterator.next();
 						j++;
 				}
+				//if else adds a new item to arraylist based on type
 				if(type.equalsIgnoreCase("book"))
 					items.add(new Book(creator,itemName,description,rating,genre,yearPublished,retail,maxTime,checkoutTime,isNew,numCopies,type,id,waitList,reviews));
 				else if (type.equalsIgnoreCase("ebook"))
@@ -73,9 +87,11 @@ public class JsonIO {
 		
 		return null;
 	}
-
-
-
+	
+	/**
+	 * loadUsers method reads from a JSON file and returns an arraylist of those users
+	 * @return ArrayList<users>
+	 */
 	public static ArrayList<User> loadUsers() {
 		ArrayList<User> users = new ArrayList<User>();
 		//Temp item list
@@ -88,6 +104,7 @@ public class JsonIO {
 			JSONArray userJSON = (JSONArray)jsonData.get("user");
 			
 			for(int i=0; i < userJSON.size(); i++) {
+				//Gets values from variables
 				JSONObject userJSONIO = (JSONObject)userJSON.get(i);
 				String firstName = (String)userJSONIO.get("firstName");
 				String lastName = (String)userJSONIO.get("lastName");
@@ -108,6 +125,7 @@ public class JsonIO {
 						j++;
 				}
 
+				//if else statement adds user to arraylist based on type
 				if(type.equalsIgnoreCase("adult"))
 				{
 					
@@ -143,6 +161,10 @@ public class JsonIO {
 		
 		return null;
 	}
+	/**
+	 * writeItem method writes to a JSON file after reading the arrayList
+	 * @param itemList
+	 */
 	public static void writeItem(ArrayList<Item> itemList)
 	{
 		try {
@@ -152,6 +174,7 @@ public class JsonIO {
 			JSONObject itemDetails= new JSONObject();;
 			JSONObject item=new JSONObject();
 			for(int i=0; i < itemList.size(); i++) {
+				//Gets values from variables
 				String creator = itemList.get(i).getCreator();
 				String itemName = itemList.get(i).getItemName();
 				String description = itemList.get(i).getDescription();
@@ -180,6 +203,7 @@ public class JsonIO {
 					reviewList.add(reviews[j]);
 				}
 				itemDetails= new JSONObject();
+				//Puts variable tags and their values into itemDetails
 				itemDetails.put("creator",creator);
 				itemDetails.put("itemName",itemName);
 				itemDetails.put("description",description);
@@ -197,6 +221,7 @@ public class JsonIO {
 				itemDetails.put("reviews", reviewList);
 				jsonArray.add(itemDetails);
 			}
+			//Print to JSON file
 			JSONObject mainItem=new JSONObject();
 			mainItem.put("item",jsonArray);
 			FileWriter file = new FileWriter(itemFile);
@@ -209,20 +234,19 @@ public class JsonIO {
             e.printStackTrace();
         }
     }
+	/**
+	 * writeItem method writes to a JSON file after reading the arrayList
+	 * @param itemList
+	 */
 	public static void writeUser(ArrayList<User> userList)
 	{
 		try {
-			
-//			FileReader reader = new FileReader(itemFile);
-//			JSONParser parser = new JSONParser();
-//			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
-//			JSONArray bookJSON = (JSONArray)jsonData.get("item");
-			
 			JSONParser parser = new JSONParser();
 			JSONArray jsonArray=new JSONArray();
 			JSONObject userDetails= new JSONObject();
 			JSONObject user=new JSONObject();
 			for(int i=0; i < userList.size(); i++) {
+				//Gets values from variables
 				String firstName = userList.get(i).getFirstName();
 				String lastName = userList.get(i).getLastName();
 				String address = userList.get(i).getAddress();
@@ -241,6 +265,7 @@ public class JsonIO {
 				}
 				String type=userList.get(i).getUserType();
 				userDetails=new JSONObject();
+				//Puts variable tags and their values into userDetails
 				userDetails.put("firstName",firstName);
 				userDetails.put("lastName",lastName);
 				userDetails.put("address",address);
@@ -251,11 +276,10 @@ public class JsonIO {
 				userDetails.put("itemLimit",itemLimit);
 				userDetails.put("balance",balance);
 				userDetails.put("userType",type);
-
 				userDetails.put("itemList",idList);
 				jsonArray.add(userDetails);
 			}
-			
+			//Writes to JSON file
 			JSONObject mainUser=new JSONObject();
 			mainUser.put("user",jsonArray);
 			FileWriter file = new FileWriter(userFile);
@@ -265,65 +289,6 @@ public class JsonIO {
          
  
         } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-	
-	public static void editBook()
-	{
-		try {
-			FileReader reader = new FileReader("Library/src/books1.json");
-			JSONParser parser = new JSONParser();
-			JSONObject jsonData = (JSONObject)new JSONParser().parse(reader);
-			JSONArray bookJSON = (JSONArray)jsonData.get("book");
-			
-
-			JSONArray jsonArray=new JSONArray();
-			JSONObject bookDetails= new JSONObject();
-			JSONObject book=new JSONObject();
-			for(int i=0; i < bookJSON.size(); i++) {
-				JSONObject bookJSONIO = (JSONObject)bookJSON.get(i);
-				String creator = (String)bookJSONIO.get("creator");
-				String itemName = (String)bookJSONIO.get("itemName");
-				String description = (String)bookJSONIO.get("description");
-				double rating= (double)bookJSONIO.get("rating");
-				String genre = (String)bookJSONIO.get("genre");
-				int yearPublished= (int)(long)bookJSONIO.get("yearPublished");
-				double retail= (double)bookJSONIO.get("retail");
-				int maxTime= (int)(long)bookJSONIO.get("maxTime");
-				int checkoutTime= (int)(long)bookJSONIO.get("checkoutTime");
-				boolean isNew=(boolean)bookJSONIO.get("isNew");
-				bookDetails.put("creator",creator);
-				bookDetails.put("itemName",itemName);
-				bookDetails.put("description",description);
-				bookDetails.put("rating",rating);
-				bookDetails.put("genre",genre);
-				bookDetails.put("yearPublished", yearPublished);
-				bookDetails.put("retail",retail);
-				bookDetails.put("maxTime", maxTime);
-				bookDetails.put("checkoutTime", checkoutTime);
-				bookDetails.put("isNew", isNew);
-				jsonArray.add(bookDetails);
-				bookDetails=new JSONObject();
-			}
-			
-			bookDetails=new JSONObject();
-			bookDetails.put("creator","Test Author");
-			bookDetails.put("itemName","Test Book"); bookDetails.put("description",
-			"Random book"); bookDetails.put("rating", 2.0);
-			bookDetails.put("genre","fiction"); bookDetails.put("yearPublished", 2020);
-			bookDetails.put("retail",50.00); bookDetails.put("maxTime", 30);
-		    bookDetails.put("checkoutTime", 0); bookDetails.put("isNew", true);
-			jsonArray.add(bookDetails);
-			JSONObject mainBook=new JSONObject();
-			mainBook.put("book",jsonArray);
-			FileWriter file = new FileWriter("Library/src/books1.json");
-            file.write(mainBook.toString());
-            file.flush();
-            file.close();
-         
- 
-        } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
     }
