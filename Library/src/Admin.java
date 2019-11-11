@@ -1,9 +1,9 @@
+import java.util.ArrayList;
 /**
  * 
  * @author Uncrustables (Joshua, Adam, Steven)
  *
  */
-import java.util.ArrayList;
 public class Admin extends User {
 
 	/**
