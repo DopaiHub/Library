@@ -54,7 +54,6 @@ public class UiDriver {
         		System.out.println("Enter your Address: ");
         		scan.nextLine();
         		String address = scan.nextLine();
-        		System.out.println("Address: " + address);
         		System.out.println("Enter your Phone Number: ");
         		int phoneNumber = scan.nextInt();
         		System.out.println("Enter your Email: ");
@@ -93,12 +92,12 @@ public class UiDriver {
 		
 		boolean run = true;
 		while(run == true) {
-			System.out.println("Please choose an operation." + "\n");
+			System.out.println("\n" + "Please choose an operation." + "\n");
 			System.out.println("1. View Account Information");
 			System.out.println("2. Search for an Item");
 			System.out.println("3. Return an Item");
 			System.out.println("4. List Your Items");
-			System.out.println("5. Exit Library System");
+			System.out.println("5. Exit Library System" + "\n");
 			
 			
 			int choice = scan.nextInt();	
@@ -152,7 +151,9 @@ public class UiDriver {
 	        		System.out.println("Options for " + itemList.get(searchChoice - 1).getItemName());
 	        		System.out.println("1. Checkout Item");
 	        		System.out.println("2. See Item Information");
-	        		System.out.println("3. Return to Menu");
+	        		System.out.println("3. See Item Reviews");
+	        		System.out.println("4. Leave a Review");
+	        		System.out.println("5. Return to Menu");
 	        		
 	        		int itemChoice = scan.nextInt();
 	        		if(itemChoice == 1) {
@@ -160,6 +161,18 @@ public class UiDriver {
 	        		}
 	        		else if(itemChoice == 2) {
 	        			System.out.println(itemList.get(searchChoice).toString());
+	        		}
+	        		else if(itemChoice == 3) {
+	        			//Prints null for every possible review, should only print one if its not null
+	        			shell.showReviews(itemList.get(searchChoice - 1).getItemName());
+	        		}
+	        		else if(itemChoice == 4) {
+	        			System.out.println("How would you rate this item out of 5.0?");
+	        			double rating = scan.nextDouble();
+	        			System.out.println("Write a Review for the item: ");
+	        			String review = scan.next();
+	        			//Null pointer in addReview
+	        			shell.addReview(itemList.get(searchChoice - 1).getItemName(), rating, review);
 	        		}
 	        		endSearch = true;
 	        	}
