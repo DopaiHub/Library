@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @author 
+ * @author Uncrustables (Joshua, Adam, Steven)
  *
  */
 public class UiDriver {
@@ -106,6 +106,10 @@ public class UiDriver {
 		boolean run = true;
 		while(run == true) {
 			System.out.println("\n" + "Please choose an operation." + "\n");
+			
+			if(you.getUserType().equalsIgnoreCase("admin")) {
+				System.out.println("0. Admin Functions");
+			}
 			System.out.println("1. View Account Information");
 			System.out.println("2. Search for an Item");
 			System.out.println("3. Return an Item");
@@ -116,6 +120,27 @@ public class UiDriver {
 			
 			int choice = scan.nextInt();	
 			switch (choice) { 
+			
+			case 0:
+				
+				if(you.getUserType().equalsIgnoreCase("admin")) {
+					System.out.println("Choose an Admin Function." + "\n");
+					System.out.println("1. Add Stock");
+					System.out.println("2. Return to Menu");
+					
+					int adminChoice = scan.nextInt();
+					if(adminChoice == 1) {
+						System.out.println("Enter an Item Name to Add : ");
+						String itemName = scan.nextLine();
+						System.out.println("Enter an Amount of Copies to Add: ");
+						int copies = scan.nextInt();
+						shell.addStock(itemName, copies);
+					}
+				}
+				
+				
+				
+				break;
 			//Case to view account information
 	        case 1:
 	        	System.out.println("\n" + "\n");
