@@ -131,6 +131,18 @@ public class SystemShell {
 		}
 	}
 	
+	public int returnIDByName(String name)
+	{
+		for(int i=0;i<jsonItemList.size();i++)
+		{
+			if(jsonItemList.get(i) != null && jsonItemList.get(i).getItemName().equalsIgnoreCase(name))
+			{
+				return jsonItemList.get(i).getId();
+			}
+		}
+		return -1;
+	}
+	
 	public void registerUser(String firstName,String lastName,String address,
 			int phoneNumber, String email, int age, String password,String type)
 	{
