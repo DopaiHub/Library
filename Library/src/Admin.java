@@ -17,10 +17,9 @@ public class Admin extends User {
 	}
 	public int getLimit()
 	{
-		return super.getLimit();
+		return super.getItemLimit();
 	}
 	
-	//TODO
 	public ArrayList<User> fineUser(String email, double fine, ArrayList<User> uList)
 	{
 		User u;
@@ -29,9 +28,7 @@ public class Admin extends User {
 			u = uList.get(i);
 			if (u.getEmail() != null && u.getEmail().equals(email))
 			{
-				System.out.println(u.getBalance());
 				u.setBalance(u.getBalance() + fine);
-				System.out.println(u.getBalance());
 				return uList;
 			}
 		}

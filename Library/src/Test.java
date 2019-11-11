@@ -19,7 +19,7 @@ public class Test {
 		for(User user : users)
 		{
 			System.out.println(user.firstName + "'s balance: " + user.getBalance());
-			System.out.println(user.firstName + "'s item limit: " +user.getLimit());
+			System.out.println(user.firstName + "'s item limit: " +user.getItemLimit());
 			System.out.println("ID:"+user.getItemList()[0]);
 		} 
 	}

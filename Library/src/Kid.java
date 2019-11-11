@@ -19,6 +19,6 @@ public class Kid extends User {
 	}
 	public int getLimit()
 	{
-		return super.getLimit();
+		return super.getItemLimit();
 	}
 }
