@@ -59,14 +59,14 @@ public class SystemShell {
 			person = jsonUserList.get(i);
 			if (person.email.equals(uEmail) && person.password.equals(uPass))
 			{
-				if (person.userType.equals("Admin"))
+				if (person.userType.equalsIgnoreCase("Admin"))
 					uAdmin = (Admin)person;
-				else if (person.userType.equals("Teacher"))
+				else if (person.userType.equalsIgnoreCase("Teacher"))
 					uTeacher = (Teacher)person;
-				if (person.userType.equals("Adult"))
+				if (person.userType.equalsIgnoreCase("Adult"))
 					uAdult = (Adult)person;
-				else if (person.userType.equals("Teacher"))
-					uTeacher = (Teacher)person;
+				else if (person.userType.equalsIgnoreCase("Kid"))
+					uKid = (Kid)person;
 				return person;
 			}
 		}
