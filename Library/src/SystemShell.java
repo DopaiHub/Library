@@ -290,10 +290,10 @@ public class SystemShell {
 			if(jsonItemList.get(i)!=null&&jsonItemList.get(i).getItemName().equalsIgnoreCase(itemName))
 			{
 				String[] reviews=new String[jsonItemList.get(i).getReviews()[i].length()];
-				if(jsonItemList.get(i).getReviews()[i]!=null)
-				reviews[i]=jsonItemList.get(i).getReviews()[i];
 				for(int j=0;j<reviews.length;j++)
 				{
+					if(jsonItemList.get(i).getReviews()[j]!=null)
+						reviews[j]=jsonItemList.get(i).getReviews()[j];
 					if(reviews[j]==null)
 					{
 						reviews[j]="Rating: "+rating+" "+review;
