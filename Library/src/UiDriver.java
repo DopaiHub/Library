@@ -171,11 +171,11 @@ public class UiDriver {
 	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n");
 	        	
-	        	for(int i = 0; i < you.getItemList().length;i++) {
+	        	for(int i = 0; i < you.getItemList().length; i++) {
 	        		if(you.getItemList()[i] > 0)
-	        			System.out.println((you.getItemList()[i]) + " "+ stringList[i]);
-	        		//COME BACK TO THIS POINT IN CASE 3
+	        			System.out.println(i + 1 + ". " + stringList[i]);
 	        	}
+	        	
 	            break;
 	        case 4: 
 	        	boolean endList = false;
