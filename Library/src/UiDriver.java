@@ -246,6 +246,20 @@ public class UiDriver {
 	        	System.out.println("------------------------------");
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
 	        	
+	        	System.out.println("Please Choose an Action.");
+	        	System.out.println("1. Pay Fine");
+	        	System.out.println("2. Fine a User");
+	        	System.out.println("3. Return to Menu");
+	        	
+	        	int userChoice = scan.nextInt();
+	        	
+	        	if(userChoice == 1) {
+	        		System.out.println("Current Debt: " + you.getBalance());
+	        		System.out.println("Enter the Amount to be Paid: ");
+	        		double amountPaid = scan.nextDouble();
+	        		shell.payFines(amountPaid);
+	        	}
+	        	
 	            break;
 	        case 6: 
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");

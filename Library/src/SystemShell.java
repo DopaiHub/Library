@@ -206,6 +206,7 @@ public class SystemShell {
 	public void payFines(double amount)
 	{
 		person.setBalance(person.getBalance()-amount);
+		System.out.println("Paid: " + amount + ". You now owe: " + person.getBalance());
 	}
 	
 	public String[] getUserItems()
