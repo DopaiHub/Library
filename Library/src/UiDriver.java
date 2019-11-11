@@ -121,8 +121,9 @@ public class UiDriver {
 			System.out.println("5. Manage Balance");
 			System.out.println("6. Exit Library System" + "\n");
 			
-			
-			int choice = scan.nextInt();	
+			scan.nextLine();
+			int choice = scan.nextInt();
+			scan.nextLine();
 			switch (choice) { 
 			
 			case 0:
@@ -133,6 +134,7 @@ public class UiDriver {
 					System.out.println("2. Return to Menu");
 					
 					int adminChoice = scan.nextInt();
+					scan.nextLine();
 					if(adminChoice == 1) {
 						System.out.println("Enter an Item Name to Add : ");
 						String itemName = scan.nextLine();
@@ -173,7 +175,8 @@ public class UiDriver {
 	        	while(endSearch == false) {
 	        		ArrayList<Item> itemList=new ArrayList<Item>();
 	        		System.out.println("Enter a keyword to search: ");
-	        		String keyword = scan.next();
+	        		
+	        		String keyword = scan.nextLine();
 	        		//API to return items matching the search term
 	        		itemList = shell.searchItem(keyword);
 	        		if(itemList.size() == 0) {
@@ -250,6 +253,7 @@ public class UiDriver {
 	        	
 	        	
 	        	System.out.println("Please Choose an Item to Return.");
+	        	scan.nextLine();
 	        	int returnChoice = scan.nextInt();
 	        	
 	        	if(stringList[returnChoice] == null) {
