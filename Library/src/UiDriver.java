@@ -97,7 +97,8 @@ public class UiDriver {
 			System.out.println("2. Search for an Item");
 			System.out.println("3. Return an Item");
 			System.out.println("4. List Your Items");
-			System.out.println("5. Exit Library System" + "\n");
+			System.out.println("5. Manage Balance");
+			System.out.println("6. Exit Library System" + "\n");
 			
 			
 			int choice = scan.nextInt();	
@@ -160,7 +161,7 @@ public class UiDriver {
 	        			shell.checkoutItem(itemList.get(searchChoice - 1).getId());
 	        		}
 	        		else if(itemChoice == 2) {
-	        			System.out.println(itemList.get(searchChoice).toString());
+	        			System.out.println(itemList.get(searchChoice - 1).toString());
 	        		}
 	        		else if(itemChoice == 3) {
 	        			//Prints null for every possible review, should only print one if its not null
@@ -237,6 +238,12 @@ public class UiDriver {
 	        	}
 	            break;
 	        case 5: 
+	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
+	        	System.out.println("Manage Balance");
+	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
+	        	
+	            break;
+	        case 6: 
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
 	        	System.out.println("Shutting Down. . .");
 	        	System.out.println("\n" + "\n" + "\n" + "\n" + "\n" + "\n" + "\n");
