@@ -23,9 +23,6 @@ public class Admin extends User {
 	public Admin(String firstName, String lastName, String address,
 			int phoneNumber, String email, int age, String password,
 			int itemLimit, double balance, String userType, int[] itemList) {
-		/*
-		 * super call to the User class using the User class constructor
-		 */
 		super(firstName, lastName, address,
 				phoneNumber, email, age, password,
 				itemLimit, balance, userType, itemList);

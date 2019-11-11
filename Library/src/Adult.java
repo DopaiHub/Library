@@ -7,8 +7,7 @@ public class Adult extends User {
 	/**
 	 * Empty default constructor
 	 */
-	public Adult() {
-	}
+	public Adult() {}
 	
 	/**
 	 * Parameterized constructor used to create Adult objects
@@ -28,9 +27,6 @@ public class Adult extends User {
 			int phoneNumber, String email, int age, String password,
 			int itemLimit, double balance, String userType, int[] itemList)
 	{
-		/*
-		 * super call to the User class using the User class constructor
-		 */
 		super(firstName, lastName, address,
 				phoneNumber, email, age, password,
 				itemLimit, balance, userType, itemList);
