@@ -277,12 +277,12 @@ public class UiDriver {
 	        		String[] userWaitList = new String[10];
 	        		userItemList = shell.getUserItems();
 	        		System.out.println("\n" + "Items you have checked out: ");
-	        		for(int i = 0; i < 10; i++) {
+	        		/*for(int i = 0; i < 10; i++) {
 	        			if(userItemList[i] != null) {
 	        			System.out.println(userItemList[i]);
 	        			}
-	        		}
-	        		
+	        		}*/
+	        		shell.dueDate();
 	        		//Print items that the user is waiting on
 	        		userWaitList = shell.searchWaitListForUser(you.getEmail());
 	        		System.out.println("\n" + "Items you are waiting on: ");
