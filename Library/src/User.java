@@ -26,7 +26,7 @@ public abstract class User {
 	}
 	
 	/**
-	 * Parameterized constructor used to create 
+	 * Parameterized constructor used to create User objects
 	 * @param firstName
 	 * @param lastName
 	 * @param address
