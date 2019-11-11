@@ -1,5 +1,13 @@
 import java.util.ArrayList;
+/**
+ * SystemShell is a singleton and has all the methods to be called by the interface
+ * @author Uncrustables (Josh,Adam,Steven)
+ *
+ */
 public class SystemShell {
+	/**
+	 * Instance variables for SystemShell
+	 */
 	protected ArrayList<Item> jsonItemList;
 	protected ArrayList<User> jsonUserList;
 	protected User person = null;
@@ -9,6 +17,9 @@ public class SystemShell {
 	protected Kid uKid = null;
 	private static SystemShell shell;
 	
+	/**
+	 * Default constructor
+	 */
 	private SystemShell()
 	{
 		person = null;
@@ -19,7 +30,10 @@ public class SystemShell {
 		jsonUserList = JsonIO.loadUsers();
 		jsonItemList = JsonIO.loadItems();
 	}
-	
+	/**
+	 * launchSystem creates a new SystemShell if its empty, otherwise it returns the current shell
+	 * @return shell
+	 */
 	public static SystemShell launchSystem()
 	{
 		if (shell == null)
@@ -27,6 +41,12 @@ public class SystemShell {
 		return shell;
 	}
 	
+	/**
+	 * searchItem searches the jsonItemList based on the string parameter given 
+	 * and returns the items that matches
+	 * @param value
+	 * @return itemList
+	 */
 	public ArrayList<Item> searchItem(String value)
 	{
 		ArrayList<Item> itemList=new ArrayList<Item>();
@@ -52,6 +72,12 @@ public class SystemShell {
 		return itemList;
 	}
 	
+	/**
+	 * loginUser method logins into the system if the email and password are valid
+	 * @param uEmail
+	 * @param uPass
+	 * @return User
+	 */
 	public User loginUser(String uEmail, String uPass)
 	{
 		for (int i = 0; i < jsonUserList.size(); i ++)
@@ -75,13 +101,19 @@ public class SystemShell {
 		return person;
 	}
 	
+	/**
+	 * logoutUser writes to the JSON files and sets person to null
+	 */
 	public void logoutUser()
 	{
 		JsonIO.writeItem(jsonItemList);
 		JsonIO.writeUser(jsonUserList);
 		person = null;
 	}
-	
+	/**
+	 * checkoutItem accounts for cases that a user cant checkout an item, otherwise it checks it out
+	 * @param id
+	 */
 	public void checkoutItem(int id)
 	{
 		if(person.getItemList().length>person.getItemLimit())
@@ -90,6 +122,7 @@ public class SystemShell {
 		{
 			System.out.println("You need to pay your fine of: "+person.getBalance());
 		}
+		//adds user to waitlist
 		else if(jsonItemList.get(id-1).getNumCopies()==0)
 		{
 			for(int i=0;i<jsonItemList.get(id-1).getWaitList().length;i++)
@@ -112,6 +145,7 @@ public class SystemShell {
 				}
 			}
 		}
+		//checks out item
 		else
 		{
 			for(int i=0;i<person.itemList.length;i++)
@@ -126,6 +160,10 @@ public class SystemShell {
 			}
 		}
 	}
+	/**
+	 * returnItem returns the item to the library that the user gives
+	 * @param id
+	 */
 	public void returnItem(int id)
 	{
 		for(int i=0;i<person.itemList.length;i++)
@@ -139,6 +177,11 @@ public class SystemShell {
 		}
 	}
 	
+	/**
+	 * Returns the ID of the item by receiving a name
+	 * @param name
+	 * @return id
+	 */
 	public int returnIDByName(String name)
 	{
 		for(int i=0;i<jsonItemList.size();i++)
@@ -151,12 +194,25 @@ public class SystemShell {
 		return -1;
 	}
 	
+	/**
+	 * registerUser method adds a user to the arrayList based on parameters
+	 * @param firstName
+	 * @param lastName
+	 * @param address
+	 * @param phoneNumber
+	 * @param email
+	 * @param age
+	 * @param password
+	 * @param type
+	 */
 	public void registerUser(String firstName,String lastName,String address,
 			int phoneNumber, String email, int age, String password,String type)
 	{
+		//default values
 		int itemLimit=10;
 		double balance=0;
 		int[] itemL=new int[10];
+		//if statement adds based on type
 		if(type.equalsIgnoreCase("adult"))
 		{
 			
@@ -184,6 +240,11 @@ public class SystemShell {
 		}
 	}
 	
+	/**
+	 * This method searches the waitlist for a user based on their email and returns the waitList
+	 * @param email
+	 * @return userWaitList
+	 */
 	public String[] searchWaitListForUser(String email)
 	{
 		String[] userWaitList = new String[10];
@@ -203,12 +264,20 @@ public class SystemShell {
 		return userWaitList;
 	}
 	
+	/**
+	 * Allows the user to pay their fines
+	 * @param amount
+	 */
 	public void payFines(double amount)
 	{
 		person.setBalance(person.getBalance()-amount);
 		System.out.println("Paid: " + amount + ". You now owe: " + person.getBalance());
 	}
 	
+	/**
+	 * returns the users items list by their itemName
+	 * @return userItems
+	 */
 	public String[] getUserItems()
 	{
 		String[] userItems = new String[10];
@@ -227,6 +296,11 @@ public class SystemShell {
 		}
 		return userItems;
 	}
+	/**
+	 * addStock adds an amount of copies to the item given the itemName
+	 * @param itemName
+	 * @param copies
+	 */
 	public void addStock(String itemName,int copies)
 	{
 		for(int i=0;i<jsonItemList.size();i++)
@@ -238,6 +312,10 @@ public class SystemShell {
 			}
 		}
 	}
+	/**
+	 * Notifies the user if they are in the waitlist for an item
+	 * @param uEmail
+	 */
 	public void notifyUser(String uEmail)
 	{
 		for(int i=0;i<jsonItemList.size();i++)
@@ -254,6 +332,9 @@ public class SystemShell {
 			}
 		}
 	}
+	/**
+	 * Prints out the dueDate for an item
+	 */
 	public void dueDate()
 	{
 		for(int i=0;i<person.getItemList().length;i++)
@@ -268,6 +349,10 @@ public class SystemShell {
 		}
 	}
 	
+	/**
+	 * showReviews takes in an itemName and prints out the the reviews
+	 * @param itemName
+	 */
 	public void showReviews(String itemName)
 	{
 		for(int i=0;i<jsonItemList.size();i++)
@@ -284,6 +369,12 @@ public class SystemShell {
 		}
 	}
 	
+	/**
+	 * addReview method adds a review to the item
+	 * @param itemName
+	 * @param rating
+	 * @param review
+	 */
 	public void addReview(String itemName,double rating,String review)
 	{
 		for(int i=0;i<jsonItemList.size();i++)
@@ -307,6 +398,11 @@ public class SystemShell {
 		}
 	}
 	
+	/**
+	 * addFine method allows the admin to fine a user
+	 * @param fineAmt
+	 * @param email
+	 */
 	public void addFine(double fineAmt, String email)
 	{
 		if (uAdmin != null)
