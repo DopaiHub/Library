@@ -21,8 +21,20 @@ public class Admin extends User {
 	}
 	
 	//TODO
-	public void fineUser(User user)
+	public ArrayList<User> fineUser(String email, double fine, ArrayList<User> uList)
 	{
-		
+		User u;
+		for (int i = 0; i < uList.size(); i++)
+		{
+			u = uList.get(i);
+			if (u.getEmail() != null && u.getEmail().equals(email))
+			{
+				System.out.println(u.getBalance());
+				uList.get(i).setBalance(uList.get(i).getBalance() + fine);
+				System.out.println(u.getBalance());
+				return uList;
+			}
+		}
+		return uList;
 	}
 }

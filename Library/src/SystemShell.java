@@ -309,20 +309,9 @@ public class SystemShell {
 	
 	public void addFine(double fineAmt, String email)
 	{
-		User u;
 		if (uAdmin != null)
 		{
-			for (int i = 0; i < jsonUserList.size(); i++)
-			{
-				u = jsonUserList.get(i);
-				if (u.getEmail() != null && u.getEmail().equals(email))
-				{
-					System.out.println(u.getBalance());
-					uAdmin.fineUser(u);
-					System.out.println(u.getBalance());
-					break;
-				}
-			}
+			jsonUserList = uAdmin.fineUser(email, fineAmt, jsonUserList);
 		}
 		else
 		{
