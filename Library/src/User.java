@@ -22,11 +22,10 @@ public abstract class User {
 	/**
 	 * Empty default constructor
 	 */
-	public User() {
-	}
+	public User() {}
 	
 	/**
-	 * Parameterized constructor used to create 
+	 * Parameterized constructor used to create User objects
 	 * @param firstName
 	 * @param lastName
 	 * @param address

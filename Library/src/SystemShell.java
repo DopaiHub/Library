@@ -407,7 +407,7 @@ public class SystemShell {
 	{
 		if (uAdmin != null)
 		{
-			jsonUserList = uAdmin.fineUser(email, fineAmt, jsonUserList);
+			uAdmin.fineUser(email, fineAmt, jsonUserList);
 		}
 		else
 		{
