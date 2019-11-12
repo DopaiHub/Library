@@ -62,12 +62,7 @@ public abstract class User {
 		return this.balance;
 	}
 	
-	//TODO need to add expiration() method to Item
-	public int getExpiration(Item item) {
-		int temp = 0;
-		return temp;
-		//return item.expiration();
-	}
+	
 	/**
 	 * Getter method for first names
 	 * @return firstName
