@@ -248,4 +248,25 @@ class JUnitTests {
 		System.out.println("Returned Items 0 and 1: " + returnedItems[0]);
 		assertTrue(returnedItems[0].equals(book1and2) && returnedItems[1].equals(book1and2));
 	}
+	
+	@Test
+	/**
+	 * Logins into JD's account and calls searchWaitlistForUser to see about items he's on the waitlist for, then checks to see that the expected
+	 * items line up with what he actually has on his waitlist
+	 * 
+	 * Given that this will always return a string array that either returns null or strings, there is no fail condition, regardless of if the
+	 * wrong email is entered or not
+	 */
+	void searchWaitlistForUserPassTest()
+	{
+		SystemShell shell = SystemShell.launchSystem();
+		shell.loginUser("JD@email.com", "123");
+		String email = "JD@email.com";
+		String expectedItem1 = "To Kill a Mockingbird";
+		String expectedItem2 = "Dante's Peak";
+		String[] waitListItems = shell.searchWaitListForUser(email);
+		for (int i = 0; i < waitListItems.length; i++)
+			System.out.println(waitListItems[i] + " ");
+		assertTrue(waitListItems[0].equals(expectedItem1) && waitListItems[1].equals(expectedItem2) && waitListItems[2] == null);
+	}
 }
