@@ -47,6 +47,12 @@ class JUnitTests {
 		assert(shell.loginUser(invalidEmail, invalidPass) == null);
 	}
 	
-	
+	//Need to make a user and log them in first
+	/*@Test
+	void logoutUserTest() {
+		SystemShell shell = SystemShell.launchSystem();
+		
+		assert();
+	}*/
 	
 }
