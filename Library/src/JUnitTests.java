@@ -66,4 +66,24 @@ class JUnitTests {
 		assert();
 	}*/
 	
+	@Test
+	void checkOutItemPassTest() {
+		SystemShell shell = SystemShell.launchSystem();
+		shell.loginUser("JD@email.com", "123");
+		int id=1;
+		int copies=shell.jsonItemList.get(id-1).getNumCopies();
+		shell.checkoutItem(id);
+		int copiesAfter=shell.jsonItemList.get(id-1).getNumCopies();
+		assertEquals(copies,copiesAfter+1);
+	}
+	
+	 @Test void checkOutItemFailTest() { 
+		 SystemShell shell =
+		 SystemShell.launchSystem(); shell.loginUser("bob@email.com", "123"); 
+		 int id=1; 
+		 int copies=shell.jsonItemList.get(id-1).getNumCopies();
+		 shell.checkoutItem(id); 
+		 int copiesAfter=shell.jsonItemList.get(id-1).getNumCopies();
+		 assertEquals(copies,copiesAfter); 
+	  }
 }
