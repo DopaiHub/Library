@@ -267,6 +267,7 @@ class JUnitTests {
 		for (int i = 0; i < waitListItems.length; i++)
 			System.out.println(waitListItems[i] + " ");
 		assertTrue(waitListItems[0].equals(expectedItem1) && waitListItems[1].equals(expectedItem2) && waitListItems[2] == null);
+	}
 	@Test
 	/**
 	 * Registers an adult given correct parameters
@@ -304,5 +305,23 @@ class JUnitTests {
 		shell.registerUser(firstName, lastName, address,
 				phoneNumber, email, age, password, userType);
 		assert(shell.jsonUserList.size() != usersSize);
+	}
+	/*@Test
+	/**
+	 * User pays a fine
+	*/
+	void payFinesTest() {
+		SystemShell shell = SystemShell.launchSystem();
+		User user = new Adult();
+		shell.loginUser("bob@email.com", "123");
+		for(int i = 0; i < shell.jsonUserList.size(); i++) {
+			if(shell.jsonUserList.get(i).getLastName().equals("Ross")) {
+				user = shell.jsonUserList.get(i);
+			}
+		}
+		
+		double bal = user.getBalance();
+		shell.payFines(10.0);
+		assert(user.getBalance() != bal);
 	}
 }
