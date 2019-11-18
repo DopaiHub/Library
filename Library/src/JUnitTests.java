@@ -64,11 +64,8 @@ class JUnitTests {
 	
 	@Test
 	/**
-<<<<<<< HEAD
 	 * Logins into JD's account and returns his copy of The Hitchhiker's Guide to the Galaxy, then checks if copies increased from before returned
-=======
 	 * Search valid keyword and return items that match
->>>>>>> 80df2ccb92f31f1c8a3d1e350a48cef1193eedd5
 	 */
 	void returnItemPassTest()
 	{
@@ -236,5 +233,19 @@ class JUnitTests {
 		shell.addFine(fineAmount, "JD@email.com");
 		double finesAfter=shell.jsonUserList.get(id).getBalance();
 		assertEquals(fines,finesAfter);
+	}
+	
+	@Test
+	/**
+	 * Logins into JD's account and calls to see the user items, then checks to see that the only two books JD has match the expected
+	 */
+	void getUserItemsTest()
+	{
+		SystemShell shell = SystemShell.launchSystem();
+		shell.loginUser("JD@email.com", "123");
+		String book1and2 = "The Cat in the Hat";
+		String[] returnedItems = shell.getUserItems();
+		System.out.println("Returned Items 0 and 1: " + returnedItems[0]);
+		assertTrue(returnedItems[0].equals(book1and2) && returnedItems[1].equals(book1and2));
 	}
 }
