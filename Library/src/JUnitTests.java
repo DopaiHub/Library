@@ -48,14 +48,6 @@ class JUnitTests {
 	}
 	
 	
-	//Need to make a user and log them in first
-	/*@Test
-	void logoutUserTest() {
-		SystemShell shell = SystemShell.launchSystem();
-		
-		assert();
-	}*/
-	
 	@Test
 	/**
 	 * Login to JD@email.com and checksout The Cat in The Hat, checks if copies of The Cat in The Hat went down by 1
