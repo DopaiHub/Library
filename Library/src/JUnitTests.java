@@ -132,7 +132,6 @@ class JUnitTests {
 		int copies=shell.jsonItemList.get(id).getNumCopies();
 		shell.addStock(itemName, addAmount);
 		int copiesAfter=shell.jsonItemList.get(id).getNumCopies();
-		System.out.println(copies+" "+copiesAfter);
 		assertEquals(copies+addAmount,copiesAfter);
 	}
 	@Test
