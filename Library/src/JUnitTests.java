@@ -1,5 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 class JUnitTests {
@@ -11,4 +13,40 @@ class JUnitTests {
 		assert(shell != null);
 	}
 
+	@Test
+	void searchItemPassTest() {
+		SystemShell shell = SystemShell.launchSystem();
+		ArrayList<Item> items = new ArrayList<Item>();
+		String book = "book";
+		items = shell.searchItem(book);
+		assert(items.size() > 0);
+	}
+	
+	@Test
+	void searchItemFailTest() {
+		SystemShell shell = SystemShell.launchSystem();
+		ArrayList<Item> items = new ArrayList<Item>();
+		String invalid = "invalid";
+		items = shell.searchItem(invalid);
+		assert(items.size() == 0);
+	}
+	
+	@Test
+	void loginUserPassTest() {
+		SystemShell shell = SystemShell.launchSystem();
+		String validEmail = "JD@email.com";
+		String validPass = "123";
+		assert(shell.loginUser(validEmail, validPass) != null);
+	}
+	
+	@Test
+	void loginUserFailTest() {
+		SystemShell shell = SystemShell.launchSystem();
+		String invalidEmail = "invalidUser";
+		String invalidPass = "321";
+		assert(shell.loginUser(invalidEmail, invalidPass) == null);
+	}
+	
+	
+	
 }
