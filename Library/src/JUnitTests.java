@@ -47,6 +47,17 @@ class JUnitTests {
 		assert(shell.loginUser(invalidEmail, invalidPass) == null);
 	}
 	
+	@Test
+	void returnItemPassTest()
+	{
+		SystemShell shell = SystemShell.launchSystem();
+		String validEmail = "JD@email.com";
+		String validPass = "123";
+		shell.loginUser(validEmail, validPass);
+		shell.returnItem(3);
+		//shell.
+	}
+	
 	//Need to make a user and log them in first
 	/*@Test
 	void logoutUserTest() {
