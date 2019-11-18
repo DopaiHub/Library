@@ -234,7 +234,6 @@ class JUnitTests {
 		double finesAfter=shell.jsonUserList.get(id).getBalance();
 		assertEquals(fines,finesAfter);
 	}
-	
 	@Test
 	/**
 	 * Logins into JD's account and calls to see the user items, then checks to see that the only two books JD has match the expected
@@ -268,5 +267,42 @@ class JUnitTests {
 		for (int i = 0; i < waitListItems.length; i++)
 			System.out.println(waitListItems[i] + " ");
 		assertTrue(waitListItems[0].equals(expectedItem1) && waitListItems[1].equals(expectedItem2) && waitListItems[2] == null);
+	@Test
+	/**
+	 * Registers an adult given correct parameters
+	 */
+	void registerAdultUserTest() {
+		SystemShell shell = SystemShell.launchSystem();
+		int usersSize = shell.jsonUserList.size();
+		String firstName = "john";
+		String lastName = "paul";
+		String address = "test lane";
+		int phoneNumber = 123;
+		String email = "JP@email.com";
+		int age = 50;
+		String password = "12345";
+		String userType = "adult";
+		shell.registerUser(firstName, lastName, address,
+				phoneNumber, email, age, password, userType);
+		assert(shell.jsonUserList.size() != usersSize);
+	}
+	@Test
+	/**
+	 * Registers an admin given correct parameters
+	 */
+	void registerAdminUserTest() {
+		SystemShell shell = SystemShell.launchSystem();
+		int usersSize = shell.jsonUserList.size();
+		String firstName = "john";
+		String lastName = "paul";
+		String address = "test lane";
+		int phoneNumber = 123;
+		String email = "JP@email.com";
+		int age = 50;
+		String password = "12345";
+		String userType = "admin";
+		shell.registerUser(firstName, lastName, address,
+				phoneNumber, email, age, password, userType);
+		assert(shell.jsonUserList.size() != usersSize);
 	}
 }
