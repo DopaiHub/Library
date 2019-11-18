@@ -64,12 +64,8 @@ class JUnitTests {
 	
 	@Test
 	/**
-<<<<<<< HEAD
 	 * Logins into JD's account and returns his copy of The Hitchhiker's Guide to the Galaxy, then checks if copies increased from before returned
-=======
-	 * Search valid keyword and return items that match
->>>>>>> 80df2ccb92f31f1c8a3d1e350a48cef1193eedd5
-	 */
+	*/
 	void returnItemPassTest()
 	{
 		SystemShell shell = SystemShell.launchSystem();
