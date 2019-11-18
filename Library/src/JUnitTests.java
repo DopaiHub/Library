@@ -51,11 +51,24 @@ class JUnitTests {
 	void returnItemPassTest()
 	{
 		SystemShell shell = SystemShell.launchSystem();
-		String validEmail = "JD@email.com";
-		String validPass = "123";
-		shell.loginUser(validEmail, validPass);
-		shell.returnItem(3);
-		//shell.
+		shell.loginUser("JD@email.com", "123");
+		int id = 3;
+		int copies = shell.jsonItemList.get(id-1).getNumCopies();
+		shell.returnItem(id);
+		int copiesAfter = shell.jsonItemList.get(id-1).getNumCopies();
+		assert(copiesAfter > copies);
+	}
+	
+	@Test
+	void returnItemPassFail()
+	{
+		SystemShell shell = SystemShell.launchSystem();
+		shell.loginUser("JD@email.com", "123");
+		int id = 4;
+		int copies = shell.jsonItemList.get(id-1).getNumCopies();
+		shell.returnItem(id);
+		int copiesAfter = shell.jsonItemList.get(id-1).getNumCopies();
+		assert(copiesAfter == copies);
 	}
 	
 	//Need to make a user and log them in first
