@@ -72,7 +72,7 @@ class JUnitTests {
 	
 	@Test 
 	/**
-	 * Cant checkout because he has fines
+	 * Can't checkout because he has fines
 	 */
 	void checkOutItemFailTest() { 
 		SystemShell shell = SystemShell.launchSystem(); 
@@ -82,6 +82,67 @@ class JUnitTests {
 		shell.checkoutItem(id); 
 		int copiesAfter=shell.jsonItemList.get(id-1).getNumCopies();
 		assertEquals(copies,copiesAfter);
+	}
+	@Test
+	/**
+	 * Tests if adding stock to an item works
+	 */
+	void addStockPassTest() {
+		SystemShell shell = SystemShell.launchSystem();
+		shell.loginUser("admin@email.com", "123");
+		int id=0;
+		String itemName="The Cat in the Hat";
+		int addAmount=1;
+		int copies=shell.jsonItemList.get(id).getNumCopies();
+		shell.addStock(itemName, addAmount);
+		int copiesAfter=shell.jsonItemList.get(id).getNumCopies();
+		System.out.println(copies+" "+copiesAfter);
+		assertEquals(copies+addAmount,copiesAfter);
+	}
+	@Test
+	/**
+	 * Tests to see if adding stock to a random item would add stock to an item
+	 */
+	void addStockFailTest() {
+		SystemShell shell = SystemShell.launchSystem();
+		shell.loginUser("admin@email.com", "123");
+		int id=0;
+		String itemName="Random Book";
+		int addAmount=1;
+		int copies=shell.jsonItemList.get(id).getNumCopies();
+		shell.addStock(itemName, addAmount);
+		int copiesAfter=shell.jsonItemList.get(id).getNumCopies();
+		assertEquals(copies,copiesAfter);
+	}
+	@Test
+	/**
+	 * Tests if review array is increased when a review is added
+	 */
+	void addReviewPassTest() {
+		SystemShell shell=SystemShell.launchSystem();
+		shell.loginUser("JD@email.com","123");
+		String itemName="The Cat in the Hat";
+		double rating=5;
+		String review="It was cool";
+		int reviews=shell.jsonItemList.get(0).getReviews().length;
+		shell.addReview(itemName, rating, review);
+		int reviewsAfter=shell.jsonItemList.get(0).getReviews().length;
+		assert((reviews-reviewsAfter<0)==true);
+	}
+	@Test
+	/**
+	 * Tests if an incorrect item name is given as a parameter, nothing happens
+	 */
+	void addReviewFailTest() {
+		SystemShell shell=SystemShell.launchSystem();
+		shell.loginUser("JD@email.com","123");
+		String itemName="Random Book";
+		double rating=5;
+		String review="It was cool";
+		int reviews=shell.jsonItemList.get(0).getReviews().length;
+		shell.addReview(itemName, rating, review);
+		int reviewsAfter=shell.jsonItemList.get(0).getReviews().length;
+		assert((reviews-reviewsAfter<0)==false);
 	}
 	@Test
 	/**
@@ -103,6 +164,7 @@ class JUnitTests {
 	 */
 	void addFineFailTest() {
 		SystemShell shell = SystemShell.launchSystem();
+		shell.uAdmin=null;
 		shell.loginUser("bob@email.com", "123");
 		int id=0;
 		double fineAmount=5.0;
