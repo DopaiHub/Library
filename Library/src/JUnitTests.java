@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * JUnit test class
+ * @author Uncrustables (Josh,Adam,Steven)
+ *
+ */
 class JUnitTests {
 
 	@Test
