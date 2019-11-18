@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 class JUnitTests {
 
 	@Test
+	/**
+	 * Create a system shell object and expect the created object not to be null
+	 */
 	void launchSystemTest() {
 		SystemShell shell = null;
 		shell = SystemShell.launchSystem();
@@ -14,6 +17,9 @@ class JUnitTests {
 	}
 
 	@Test
+	/**
+	 * Search for an item using a valid search term and expect at least one result
+	 */
 	void searchItemPassTest() {
 		SystemShell shell = SystemShell.launchSystem();
 		ArrayList<Item> items = new ArrayList<Item>();
@@ -23,6 +29,9 @@ class JUnitTests {
 	}
 	
 	@Test
+	/**
+	 * Search for an item using an invalid search term and expect no results
+	 */
 	void searchItemFailTest() {
 		SystemShell shell = SystemShell.launchSystem();
 		ArrayList<Item> items = new ArrayList<Item>();
@@ -32,6 +41,9 @@ class JUnitTests {
 	}
 	
 	@Test
+	/**
+	 * Provide valid username and password and expect the user to be logged in
+	 */
 	void loginUserPassTest() {
 		SystemShell shell = SystemShell.launchSystem();
 		String validEmail = "JD@email.com";
@@ -40,6 +52,9 @@ class JUnitTests {
 	}
 	
 	@Test
+	/**
+	 * Provide invalid username and password and expect the user not to be logged in
+	 */
 	void loginUserFailTest() {
 		SystemShell shell = SystemShell.launchSystem();
 		String invalidEmail = "invalidUser";
@@ -47,14 +62,35 @@ class JUnitTests {
 		assert(shell.loginUser(invalidEmail, invalidPass) == null);
 	}
 	
-	
-	//Need to make a user and log them in first
-	/*@Test
-	void logoutUserTest() {
+	@Test
+	/**
+	 * Search valid keyword and return items that match
+	 */
+	void returnItemPassTest()
+	{
 		SystemShell shell = SystemShell.launchSystem();
-		
-		assert();
-	}*/
+		shell.loginUser("JD@email.com", "123");
+		int id = 3;
+		int copies = shell.jsonItemList.get(id-1).getNumCopies();
+		shell.returnItem(id);
+		int copiesAfter = shell.jsonItemList.get(id-1).getNumCopies();
+		assert(copiesAfter > copies);
+	}
+	
+	@Test
+	/**
+	 * Search invalid keyword and return nothing
+	 */
+	void returnItemPassFail()
+	{
+		SystemShell shell = SystemShell.launchSystem();
+		shell.loginUser("JD@email.com", "123");
+		int id = 4;
+		int copies = shell.jsonItemList.get(id-1).getNumCopies();
+		shell.returnItem(id);
+		int copiesAfter = shell.jsonItemList.get(id-1).getNumCopies();
+		assert(copiesAfter == copies);
+	}
 	
 	@Test
 	/**
