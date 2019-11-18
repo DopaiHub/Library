@@ -48,6 +48,9 @@ class JUnitTests {
 	}
 	
 	@Test
+	/**
+	 * Logins into JD's account and returns his copy of The Hitchhiker's Guide to the Galaxy, then checks if copies increased from before returned
+	 */
 	void returnItemPassTest()
 	{
 		SystemShell shell = SystemShell.launchSystem();
@@ -60,7 +63,10 @@ class JUnitTests {
 	}
 	
 	@Test
-	void returnItemPassFail()
+	/**
+	 * Logins into JD's account and tries to return an item he doesn't have, then checks to see that copies before and after are equal
+	 */
+	void returnItemFailTest()
 	{
 		SystemShell shell = SystemShell.launchSystem();
 		shell.loginUser("JD@email.com", "123");
@@ -68,7 +74,32 @@ class JUnitTests {
 		int copies = shell.jsonItemList.get(id-1).getNumCopies();
 		shell.returnItem(id);
 		int copiesAfter = shell.jsonItemList.get(id-1).getNumCopies();
-		assert(copiesAfter == copies);
+		assertEquals(copiesAfter, copies);
+	}
+	
+	@Test
+	/**
+	 * Logins into JD's account then searches for Dante's Peak, then checks to see if the id returned matches with the expected id
+	 */
+	void returnIDByNamePassTest()
+	{
+		SystemShell shell = SystemShell.launchSystem();
+		shell.loginUser("JD@email.com", "123");
+		int peakID = 5;
+		int returnedID = shell.returnIDByName("Dante's Peak");
+		assertEquals(returnedID, peakID);
+	}
+	
+	@Test
+	/**
+	 * Logins into JD's account then searches for a misspelled item, then checks to see if id returned is -1
+	 */
+	void returnIDByNameFailTest()
+	{
+		SystemShell shell = SystemShell.launchSystem();
+		shell.loginUser("JD@email.com", "123");
+		int returnedID = shell.returnIDByName("Dante's Peek");
+		assertEquals(returnedID, -1);
 	}
 	
 	@Test
